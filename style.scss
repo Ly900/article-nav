@@ -11,3 +11,12 @@ h1 {
 html {
 	font-family: 'Nunito', sans-serif;
 }
+
+.article {
+	&__header {
+		text-align: center;
+	}
+ &__nav {
+
+ }
+}

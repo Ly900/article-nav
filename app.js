@@ -1,28 +1,46 @@
 const Heading = () => {
 	return(
-		<div class="article-nav__heading">
+		<div class="article__heading">
 			<h1>Dynamic Nav</h1>
 			<p>I am a dynamic nav created by properties in a JSON.</p>
 		</div>
 	)
 }
 
-const Nav = () => {
+const NavWrapper = () => {
 	return(
-		<div>I am the nav.</div>
+		<div className="article__nav-wrapper">
+			<Nav />
+			<BreadCrumb />
+		</div>
 	)
 }
 
-const ArticleNav = () => {
+const BreadCrumb = () => {
+	return (
+		<div className="article__breadcrumb">I tell you which is the active nav item.</div>
+	)
+}
+
+const Nav = () => {
+	return (
+		<div className="article__nav">I will be the actual nav.</div>
+	)
+}
+
+
+
+
+const ArticleComponent = () => {
 	return(
-		<header className="article-nav__header">
+		<header className="article__header">
 			<Heading />
-			<Nav />
+			<NavWrapper />
 		</header>
 	)
 }
 
 ReactDOM.render(
-	<ArticleNav/>,
-	document.getElementById("app")
+	<ArticleComponent/>,
+	document.getElementById("article")
 );
