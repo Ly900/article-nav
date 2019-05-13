@@ -12,6 +12,7 @@ h1 {
 
 html {
 	font-family: 'Nunito', sans-serif;
+	font-size: 16px;
 }
 
 .article {
@@ -27,6 +28,7 @@ html {
 		text-align: left;
 		width: 50%;
 		margin: 0 auto;
+		margin-bottom: 1em;
 	}
 	&__list {
 		list-style-type: none;
@@ -35,10 +37,25 @@ html {
 	}
 	&__nav-button {
 		position: absolute;
-		top: 0;
+		top: 3px;
 		right: 0;
+		padding: .75em;
+    margin: .1em;
+    background: none;
+		border: none;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&__icon {
+		font-size: 1rem;
 	}
 	&__list-item {
 		border: 1px solid #ddd;
+		padding: .5em;
+	}
+	&__anchor {
+		padding: .5em;
+		text-decoration: none;
 	}
 }

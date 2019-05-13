@@ -7,11 +7,11 @@ const BreadCrumb = (props) => {
 const Nav = () => {
 	return (
 		<nav className="article__nav" aria-label="article navigation">
-		<button className="article__nav-button"><i className="icon-down"></i></button>
+		<button className="article__nav-button"><i className="fas fa-chevron-down article__icon"></i></button>
 		<ul className="article__list">
-			<li className="article__list-item"><a href="">Checking</a></li>
-			<li className="article__list-item"><a href="">Credit/Debit Cards</a></li>
-			<li className="article__list-item"><a href="">Certificates/IRAs/Trust</a></li>
+			<li className="article__list-item"><a href="" className="article__anchor">Checking</a></li>
+			<li className="article__list-item"><a href="" className="article__anchor">Credit/Debit Cards</a></li>
+			<li className="article__list-item"><a href="" className="article__anchor">Certificates/IRAs/Trust</a></li>
 		</ul>
 	</nav>
 	)
