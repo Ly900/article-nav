@@ -17,12 +17,14 @@ html {
 .article__heading {
   font-weight: 800; }
 .article__nav {
-  border: 1px solid gray;
+  border: none;
   position: relative;
   text-align: left;
-  width: 50%;
+  width: 33%;
   margin: 0 auto;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  font-size: 1.5rem;
+  background: #FDCF5C; }
 .article__list {
   list-style-type: none;
   border: none;
@@ -31,19 +33,21 @@ html {
   position: absolute;
   top: 3px;
   right: 0;
-  padding: .75em;
+  padding: 1em;
   margin: .1em;
   background: none;
   border: none; }
   .article__nav-button:hover {
     cursor: pointer; }
 .article__icon {
-  font-size: 1rem; }
-.article__list-item {
-  border: 1px solid #ddd;
-  padding: .5em; }
+  font-size: 1.5rem; }
 .article__anchor {
   padding: .5em;
-  text-decoration: none; }
+  text-decoration: none;
+  color: black; }
+.article__anchor_active {
+  display: block; }
+.article__anchor_not-active {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

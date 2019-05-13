@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,800');
 
+// Variables
+$navColor: #FDCF5C;
+
 html,
 header,
 div, 
@@ -23,12 +26,14 @@ html {
 		font-weight: 800;
 	}
 	&__nav {
-		border: 1px solid gray;
+		border: none;
 		position: relative;
 		text-align: left;
-		width: 50%;
+		width: 33%;
 		margin: 0 auto;
 		margin-bottom: 1em;
+		font-size: 1.5rem;
+		background: $navColor;
 	}
 	&__list {
 		list-style-type: none;
@@ -39,7 +44,7 @@ html {
 		position: absolute;
 		top: 3px;
 		right: 0;
-		padding: .75em;
+		padding: 1em;
     margin: .1em;
     background: none;
 		border: none;
@@ -48,14 +53,21 @@ html {
 		}
 	}
 	&__icon {
-		font-size: 1rem;
+		font-size: 1.5rem;
 	}
 	&__list-item {
-		border: 1px solid #ddd;
-		padding: .5em;
+		// border: 1px solid #ddd;
+		// padding: .5em;
 	}
 	&__anchor {
 		padding: .5em;
 		text-decoration: none;
+		color: black;
+	}
+	&__anchor_active {
+		display: block;
+	}
+	&__anchor_not-active {
+		display: none;
 	}
 }
