@@ -17,7 +17,7 @@ class ArticleComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			navExpanded: true,
+			navExpanded: false,
 			activeCategory: "Finances"
 		}
 	}
@@ -30,8 +30,10 @@ class ArticleComponent extends React.Component {
 	}
 
 	render() {
-		let iconClassName = this.state.navExpanded ? "fa-chevron-down" : "fa-chevron-up";
-		console.log(this.state.navExpanded);
+		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
+		let listItemClass = this.state.navExpanded ? "article__anchor_expanded" : "";
+		
+		console.log("navExpanded: ", this.state.navExpanded);
 
 		return(
 			<header className="article__header">
@@ -42,14 +44,17 @@ class ArticleComponent extends React.Component {
 					<nav className="article__nav" aria-label="article navigation">
 						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list article__list_expanded">
-							<li className="article__list-item article__list-item_expanded">
-								<a href="#" className="article__anchor article__anchor_active" onClick={this.handleListItemClick}>Checking</a>
+							<li className="article__list-item">
+								<a href="#" className={`article__anchor article__anchor_active ${listItemClass}`}
+								onClick={this.handleListItemClick}>Checking</a>
 							</li>
-							<li className="article__list-item article__list-item_expanded">
-								<a href="#" className="article__anchor article__anchor_not-active" onClick={this.handleListItemClick}>Credit/Debit Cards</a>
+							<li className="article__list-item">
+								<a href="#" className={`article__anchor ${listItemClass}`}
+								onClick={this.handleListItemClick}>Credit/Debit Cards</a>
 							</li>
-							<li className="article__list-item article__list-item_expanded">
-								<a href="#" className="article__anchor article__anchor_not-active" onClick={this.handleListItemClick}>Certificates/IRAs/Trust</a>
+							<li className="article__list-item">
+								<a href="#" className={`article__anchor ${listItemClass}`}
+								onClick={this.handleListItemClick}>Certificates/IRAs/Trust</a>
 							</li>
 						</ul>
 					</nav>

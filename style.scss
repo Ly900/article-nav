@@ -57,21 +57,17 @@ html {
 		font-size: 1.5rem;
 	}
 	&__list-item {
-		// border: 1px solid #ddd;
-		// padding: .5em;
-		&_expanded {
-			border-bottom: 2px solid $navBorder;
-		}
 	}
 	&__anchor {
 		padding: .25em .5em;
 		text-decoration: none;
 		color: black;
+		display: none;
 	}
 	&__anchor_active {
 		display: block;
 	}
-	&__anchor_not-active {
+	&__anchor_expanded {
 		display: block;
 	}
 }
