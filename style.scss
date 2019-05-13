@@ -2,6 +2,7 @@
 
 // Variables
 $navColor: #FDCF5C;
+$navBorder: mix(#000, $navColor, 5%);
 
 html,
 header,
@@ -42,8 +43,8 @@ html {
 	}
 	&__nav-button {
 		position: absolute;
-		top: 3px;
-		right: 0;
+		top: 0;
+		right: 6px;
 		padding: 1em;
     margin: .1em;
     background: none;
@@ -58,9 +59,12 @@ html {
 	&__list-item {
 		// border: 1px solid #ddd;
 		// padding: .5em;
+		&_expanded {
+			border-bottom: 2px solid $navBorder;
+		}
 	}
 	&__anchor {
-		padding: .5em;
+		padding: .25em .5em;
 		text-decoration: none;
 		color: black;
 	}
@@ -68,6 +72,6 @@ html {
 		display: block;
 	}
 	&__anchor_not-active {
-		display: none;
+		display: block;
 	}
 }

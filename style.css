@@ -31,8 +31,8 @@ html {
   padding: 0; }
 .article__nav-button {
   position: absolute;
-  top: 3px;
-  right: 0;
+  top: 0;
+  right: 6px;
   padding: 1em;
   margin: .1em;
   background: none;
@@ -41,13 +41,15 @@ html {
     cursor: pointer; }
 .article__icon {
   font-size: 1.5rem; }
+.article__list-item_expanded {
+  border-bottom: 2px solid #f0c557; }
 .article__anchor {
-  padding: .5em;
+  padding: .25em .5em;
   text-decoration: none;
   color: black; }
 .article__anchor_active {
   display: block; }
 .article__anchor_not-active {
-  display: none; }
+  display: block; }
 
 /*# sourceMappingURL=style.css.map */
