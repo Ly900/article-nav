@@ -25,6 +25,9 @@ html {
   margin-bottom: 1em;
   font-size: 1.5rem;
   background: #FDCF5C; }
+  @media screen and (min-width: 780px) {
+    .article__nav {
+      width: 50%; } }
 .article__list {
   list-style-type: none;
   border: none;
@@ -41,6 +44,8 @@ html {
     cursor: pointer; }
 .article__icon {
   font-size: 1.5rem; }
+.article__list-item_expanded:not(:last-child) {
+  border-bottom: 2px solid #f0c557; }
 .article__anchor {
   padding: .25em .5em;
   text-decoration: none;

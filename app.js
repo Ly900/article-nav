@@ -31,7 +31,8 @@ class ArticleComponent extends React.Component {
 
 	render() {
 		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
-		let listItemClass = this.state.navExpanded ? "article__anchor_expanded" : "";
+		let listItemClass = this.state.navExpanded ? "article__list-item_expanded" : "";
+		let anchorItemClass = this.state.navExpanded ? "article__anchor_expanded" : "";
 		
 		console.log("navExpanded: ", this.state.navExpanded);
 
@@ -44,16 +45,16 @@ class ArticleComponent extends React.Component {
 					<nav className="article__nav" aria-label="article navigation">
 						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list article__list_expanded">
-							<li className="article__list-item">
-								<a href="#" className={`article__anchor article__anchor_active ${listItemClass}`}
+							<li className={`article__list-item ${listItemClass}`}>
+								<a href="#" className={`article__anchor article__anchor_active ${anchorItemClass}`}
 								onClick={this.handleListItemClick}>Checking</a>
 							</li>
-							<li className="article__list-item">
-								<a href="#" className={`article__anchor ${listItemClass}`}
+							<li className={`article__list-item ${listItemClass}`}>
+								<a href="#" className={`article__anchor ${anchorItemClass}`}
 								onClick={this.handleListItemClick}>Credit/Debit Cards</a>
 							</li>
-							<li className="article__list-item">
-								<a href="#" className={`article__anchor ${listItemClass}`}
+							<li className={`article__list-item ${listItemClass}`}>
+								<a href="#" className={`article__anchor ${anchorItemClass}`}
 								onClick={this.handleListItemClick}>Certificates/IRAs/Trust</a>
 							</li>
 						</ul>
