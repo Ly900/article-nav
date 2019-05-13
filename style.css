@@ -24,7 +24,8 @@ html {
   margin: 0 auto;
   margin-bottom: 1em;
   font-size: 1.5rem;
-  background: #FDCF5C; }
+  background: #FDCF5C;
+  border-radius: 5px; }
   @media screen and (min-width: 780px) {
     .article__nav {
       width: 50%; } }

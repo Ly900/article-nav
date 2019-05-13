@@ -35,6 +35,7 @@ html {
 		margin-bottom: 1em;
 		font-size: 1.5rem;
 		background: $navColor;
+		border-radius: 5px;
 		@media screen and (min-width: 780px) {
 			width: 50%;
 		}
