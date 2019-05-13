@@ -2,6 +2,8 @@
 html,
 header,
 div,
+ul,
+li,
 h1 {
   margin: 0;
   padding: 0; }
@@ -13,5 +15,21 @@ html {
   text-align: center; }
 .article__heading {
   font-weight: 800; }
+.article__nav {
+  border: 1px solid gray;
+  position: relative;
+  text-align: left;
+  width: 50%;
+  margin: 0 auto; }
+.article__list {
+  list-style-type: none;
+  border: none;
+  padding: 0; }
+.article__nav-button {
+  position: absolute;
+  top: 0;
+  right: 0; }
+.article__list-item {
+  border: 1px solid #ddd; }
 
 /*# sourceMappingURL=style.css.map */

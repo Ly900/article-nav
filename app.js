@@ -1,12 +1,19 @@
 const BreadCrumb = (props) => {
 	return (
-		<div className="article__breadcrumb">Active nav item: {props.category}</div>
+		<div className="article__breadcrumb">Active nav item: <br/> <strong>{props.category}</strong> </div>
 	)
 }
 
 const Nav = () => {
 	return (
-		<div className="article__nav">I will be the actual nav.</div>
+		<nav className="article__nav" aria-label="article navigation">
+		<button className="article__nav-button"><i className="icon-down"></i></button>
+		<ul className="article__list">
+			<li className="article__list-item"><a href="">Checking</a></li>
+			<li className="article__list-item"><a href="">Credit/Debit Cards</a></li>
+			<li className="article__list-item"><a href="">Certificates/IRAs/Trust</a></li>
+		</ul>
+	</nav>
 	)
 }
 
