@@ -1,24 +1,6 @@
-const Heading = () => {
-	return(
-		<div class="article__heading">
-			<h1>Dynamic Nav</h1>
-			<p>I am a dynamic nav created by properties in a JSON.</p>
-		</div>
-	)
-}
-
-const NavWrapper = () => {
-	return(
-		<div className="article__nav-wrapper">
-			<Nav />
-			<BreadCrumb />
-		</div>
-	)
-}
-
-const BreadCrumb = () => {
+const BreadCrumb = (props) => {
 	return (
-		<div className="article__breadcrumb">I tell you which is the active nav item.</div>
+		<div className="article__breadcrumb">Active nav item: {props.category}</div>
 	)
 }
 
@@ -28,16 +10,37 @@ const Nav = () => {
 	)
 }
 
-
-
-
-const ArticleComponent = () => {
+const NavWrapper = (props) => {
 	return(
-		<header className="article__header">
-			<Heading />
-			<NavWrapper />
-		</header>
+		<div className="article__nav-container">
+			<Nav />
+			<BreadCrumb category={props.category}/>
+		</div>
 	)
+}
+
+const Heading = () => {
+	return(
+		<div class="article__heading-container">
+			<h1 class="article__heading">Dynamic Nav</h1>
+			<p>I am a dynamic nav created by properties in a JSON.</p>
+		</div>
+	)
+}
+
+class ArticleComponent extends React.Component {
+	state = {
+		activeCategory: "Finances"
+	}
+
+	render() {
+		return(
+			<header className="article__header">
+				<Heading/>
+				<NavWrapper category={this.state.activeCategory}/>
+			</header>
+		)
+	}
 }
 
 ReactDOM.render(

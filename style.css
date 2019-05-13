@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,800");
 html,
 header,
 div,
@@ -11,5 +11,7 @@ html {
 
 .article__header {
   text-align: center; }
+.article__heading {
+  font-weight: 800; }
 
 /*# sourceMappingURL=style.css.map */

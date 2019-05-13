@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,800');
 
 html,
 header,
@@ -16,7 +16,10 @@ html {
 	&__header {
 		text-align: center;
 	}
- &__nav {
+	&__heading {
+		font-weight: 800;
+	}
+	&__nav {
 
- }
+	}
 }
