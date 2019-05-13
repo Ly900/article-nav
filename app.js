@@ -4,28 +4,6 @@ const BreadCrumb = (props) => {
 	)
 }
 
-const Nav = () => {
-	return (
-		<nav className="article__nav" aria-label="article navigation">
-		<button className="article__nav-button"><i className="fas fa-chevron-down article__icon"></i></button>
-		<ul className="article__list article__list_expanded">
-			<li className="article__list-item article__list-item_expanded"><a href="#" className="article__anchor article__anchor_active">Checking</a></li>
-			<li className="article__list-item article__list-item_expanded"><a href="#" className="article__anchor article__anchor_not-active">Credit/Debit Cards</a></li>
-			<li className="article__list-item article__list-item_expanded"><a href="#" className="article__anchor article__anchor_not-active">Certificates/IRAs/Trust</a></li>
-		</ul>
-	</nav>
-	)
-}
-
-const NavWrapper = (props) => {
-	return(
-		<div className="article__nav-container">
-			<Nav />
-			<BreadCrumb category={props.category}/>
-		</div>
-	)
-}
-
 const Heading = () => {
 	return(
 		<div class="article__heading-container">
@@ -36,16 +14,46 @@ const Heading = () => {
 }
 
 class ArticleComponent extends React.Component {
-	state = {
-		navExpanded: false,
-		activeCategory: "Finances"
+	constructor(props) {
+		super(props);
+		this.state = {
+			navExpanded: true,
+			activeCategory: "Finances"
+		}
+	}
+
+	handleListItemClick = () => {
+		this.setState(prevState => ({
+			navExpanded: !prevState.navExpanded
+		}));
+		console.log("navExpanded: ", this.state.navExpanded);
 	}
 
 	render() {
 		return(
 			<header className="article__header">
+
 				<Heading/>
-				<NavWrapper category={this.state.activeCategory}/>
+
+				<div className="article__nav-container">
+					<nav className="article__nav" aria-label="article navigation">
+						<button className="article__nav-button"><i className="fas fa-chevron-down article__icon"></i></button>
+						<ul className="article__list article__list_expanded">
+							<li className="article__list-item article__list-item_expanded">
+								<a href="#" className="article__anchor article__anchor_active" onClick={this.handleListItemClick}>Checking</a>
+							</li>
+							<li className="article__list-item article__list-item_expanded">
+								<a href="#" className="article__anchor article__anchor_not-active" onClick={this.handleListItemClick}>Credit/Debit Cards</a>
+							</li>
+							<li className="article__list-item article__list-item_expanded">
+								<a href="#" className="article__anchor article__anchor_not-active" onClick={this.handleListItemClick}>Certificates/IRAs/Trust</a>
+							</li>
+						</ul>
+					</nav>
+
+					<BreadCrumb />
+				</div>
+
 			</header>
 		)
 	}
