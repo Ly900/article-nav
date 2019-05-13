@@ -26,10 +26,13 @@ class ArticleComponent extends React.Component {
 		this.setState(prevState => ({
 			navExpanded: !prevState.navExpanded
 		}));
-		console.log("navExpanded: ", this.state.navExpanded);
+		// console.log("navExpanded: ", this.state.navExpanded);
 	}
 
 	render() {
+		let iconClassName = this.state.navExpanded ? "fa-chevron-down" : "fa-chevron-up";
+		console.log(this.state.navExpanded);
+
 		return(
 			<header className="article__header">
 
@@ -37,7 +40,7 @@ class ArticleComponent extends React.Component {
 
 				<div className="article__nav-container">
 					<nav className="article__nav" aria-label="article navigation">
-						<button className="article__nav-button"><i className="fas fa-chevron-down article__icon"></i></button>
+						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list article__list_expanded">
 							<li className="article__list-item article__list-item_expanded">
 								<a href="#" className="article__anchor article__anchor_active" onClick={this.handleListItemClick}>Checking</a>
