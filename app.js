@@ -45,7 +45,7 @@ class ArticleComponent extends React.Component {
 					<nav className="article__nav" aria-label="article navigation">
 						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list article__list_expanded">
-							<li className={`article__list-item ${listItemClass}`}>
+							<li className={`article__list-item article__list-item_active ${listItemClass}`}>
 								<a href="#" className={`article__anchor article__anchor_active ${anchorItemClass}`}
 								onClick={this.handleListItemClick}>Checking</a>
 							</li>

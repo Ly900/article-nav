@@ -2,7 +2,8 @@
 
 // Variables
 $navColor: #FDCF5C;
-$navBorder: 2px solid mix(#000, $navColor, 5%);
+$activeListItem: mix(#000, $navColor, 5%);
+$navBorderColor: mix(#000, $activeListItem, 1%);
 
 html,
 header,
@@ -64,7 +65,7 @@ html {
 
 	}
 	&__list-item_expanded:not(:last-child) {
-		border-bottom: $navBorder;
+		border-bottom: 2px solid $navBorderColor;
 	}
 	&__anchor {
 		padding: .25em .5em;
@@ -74,6 +75,7 @@ html {
 	}
 	&__anchor_active {
 		display: block;
+		background: $activeListItem;
 	}
 	&__anchor_expanded {
 		display: block;
