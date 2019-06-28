@@ -52,6 +52,8 @@ html {
   text-decoration: none;
   color: black;
   display: none; }
+  .article__anchor:not(.article__anchor_active):hover {
+    background: #e9be55; }
 .article__anchor_active {
   display: block;
   background: #f0c557; }

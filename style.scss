@@ -3,6 +3,7 @@
 // Variables
 $navColor: #FDCF5C;
 $activeListItem: mix(#000, $navColor, 5%);
+$hoverListItem: mix(#000, $navColor, 8%);
 $navBorderColor: mix(#000, $activeListItem, 1%);
 
 html,
@@ -62,7 +63,9 @@ html {
 		font-size: 1.5rem;
 	}
 	&__list-item {
+		&:hover {
 
+		}
 	}
 	&__list-item_expanded:not(:last-child) {
 		border-bottom: 2px solid $navBorderColor;
@@ -72,6 +75,9 @@ html {
 		text-decoration: none;
 		color: black;
 		display: none;
+		&:not(.article__anchor_active):hover {
+			background: $hoverListItem;
+		}
 	}
 	&__anchor_active {
 		display: block;
