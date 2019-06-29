@@ -1,6 +1,6 @@
 const BreadCrumb = (props) => {
 	return (
-		<div className="article__breadcrumb">Active nav item: <br/> <strong>{props.category}</strong> </div>
+		<div className="article__breadcrumb">Active nav item: <br/> <strong>{props.activeCategory}</strong> </div>
 	)
 }
 
@@ -32,6 +32,11 @@ class ArticleComponent extends React.Component {
 			for (let listItem of listItems) {
 				listItem.classList.add("article__anchor_expanded");
 			}
+
+			this.setState(prevState => ({
+				navExpanded: !prevState.navExpanded
+			}));
+
 		}
 		// If the nav is expanded, display the list item that was clicked and collapse all the other list items.
 		else {
@@ -39,11 +44,16 @@ class ArticleComponent extends React.Component {
 				listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
 			}
 			e.target.classList.add("article__anchor_expanded", "article__anchor_active");
-		}
 
-		this.setState(prevState => ({
-			navExpanded: !prevState.navExpanded
-		}));
+			// Set the state's activeCategory
+			const activeItem = document.getElementsByClassName("article__anchor_active");
+
+			this.setState(prevState => ({
+				navExpanded: !prevState.navExpanded,
+				activeCategory: activeItem[0].innerText
+			}));
+
+		}
 	}
 
 	render() {
@@ -57,6 +67,7 @@ class ArticleComponent extends React.Component {
 			<header className="article__header">
 
 				<Heading/>
+				<BreadCrumb activeCategory={this.state.activeCategory}/>
 
 				<div className="article__nav-container">
 					<nav className="article__nav" aria-label="article navigation">
@@ -95,7 +106,6 @@ class ArticleComponent extends React.Component {
 						</ul>
 					</nav>
 
-					<BreadCrumb />
 				</div>
 
 			</header>

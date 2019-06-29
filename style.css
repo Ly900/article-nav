@@ -16,6 +16,8 @@ html {
   text-align: center; }
 .article__heading {
   font-weight: 800; }
+.article__breadcrumb {
+  margin-bottom: 1em; }
 .article__nav {
   border: none;
   position: relative;
