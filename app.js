@@ -34,11 +34,6 @@ class ArticleComponent extends React.Component {
 			listItems = document.getElementsByClassName("article__anchor");
 			console.log(listItems);
 
-			// listItems.forEach = (item) => {
-			// 	console.log(item);
-			// 	item.classList.add("article__anchor_expanded");
-			// }
-
 			for (let listItem of listItems) {
 				listItem.classList.add("article__anchor_expanded");
 			}
@@ -48,10 +43,23 @@ class ArticleComponent extends React.Component {
 		// If the nav is expanded...
 		else {
 			listItems = document.getElementsByClassName("article__anchor");
-			console.log(listItems);
+
+			// Close all the list items.
 			for (let listItem of listItems) {
 				listItem.classList.remove("article__anchor_expanded");
 			}
+
+			// Expand the list item that was clicked.
+			e.target.classList.add("article__anchor_expanded");
+
+			// Remove active class from previous active list item.
+			listItems = document.getElementsByClassName("article__anchor");
+			for (let listItem of listItems) {
+				listItem.classList.remove("article__anchor_active");
+			}
+
+			// Add active class to list item clicked.
+			e.target.classList.add("article__anchor_active");
 		}
 
 		this.setState(prevState => ({
