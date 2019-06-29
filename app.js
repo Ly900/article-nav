@@ -44,22 +44,14 @@ class ArticleComponent extends React.Component {
 		else {
 			listItems = document.getElementsByClassName("article__anchor");
 
-			// Close all the list items.
+			// Collapse all the other list items.
 			for (let listItem of listItems) {
-				listItem.classList.remove("article__anchor_expanded");
+				listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
 			}
 
-			// Expand the list item that was clicked.
-			e.target.classList.add("article__anchor_expanded");
+			// Display the list item that was clicked.
+			e.target.classList.add("article__anchor_expanded", "article__anchor_active");
 
-			// Remove active class from previous active list item.
-			listItems = document.getElementsByClassName("article__anchor");
-			for (let listItem of listItems) {
-				listItem.classList.remove("article__anchor_active");
-			}
-
-			// Add active class to list item clicked.
-			e.target.classList.add("article__anchor_active");
 		}
 
 		this.setState(prevState => ({
