@@ -37,7 +37,7 @@ html {
 		margin-bottom: 1em;
 		font-size: 1.5rem;
 		background: $navColor;
-		border-radius: 5px;
+		// border-radius: 5px;
 		@media screen and (min-width: 780px) {
 			width: 50%;
 		}
@@ -77,11 +77,13 @@ html {
 		display: none;
 		&:not(.article__anchor_active):hover {
 			background: $hoverListItem;
+			// border-radius: 5px;
 		}
 	}
 	&__anchor_active {
 		display: block;
 		background: $activeListItem;
+		// border-radius: 5px;
 	}
 	&__anchor_expanded {
 		display: block;
