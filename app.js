@@ -13,31 +13,11 @@ const Heading = () => {
 	)
 }
 
-class ListItem extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			active: false
-		}
-	}
-
-	render() {
-		let listItemClass = this.props.navExpanded ? "article__list-item_expanded" : "";
-		let anchorItemClass = this.props.navExpanded ? "article__anchor_expanded" : "";
-
-		return(
-			<li className={`article__list-item ${listItemClass}`}>
-				<a href="#" className={`article__anchor article__anchor_active ${anchorItemClass}`} onClick={(e) => {this.handleListItemClick(e)}}>{this.props.product}</a>
-			</li>
-		)
-	}
-
-}
-
 class ArticleComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			// navExpanded: false,
 			navExpanded: false,
 			activeCategory: "Finances",
 			activeListItem: null
@@ -45,19 +25,44 @@ class ArticleComponent extends React.Component {
 	}
 
 	handleListItemClick = (e) => {
+		let listItems;
+
+		// If the nav is collapsed... 
+		if (!this.state.navExpanded) {
+			// listItems = document.getElementsByClassName("article__anchor");
+
+			listItems = document.getElementsByClassName("article__anchor");
+			console.log(listItems);
+
+			// listItems.forEach = (item) => {
+			// 	console.log(item);
+			// 	item.classList.add("article__anchor_expanded");
+			// }
+
+			for (let listItem of listItems) {
+				listItem.classList.add("article__anchor_expanded");
+			}
+
+		}
+		
+		// If the nav is expanded...
+		else {
+			listItems = document.getElementsByClassName("article__anchor");
+			console.log(listItems);
+			for (let listItem of listItems) {
+				listItem.classList.remove("article__anchor_expanded");
+			}
+		}
+
 		this.setState(prevState => ({
-			navExpanded: !prevState.navExpanded,
-			activeListItem: e.target
+			navExpanded: !prevState.navExpanded
 		}));
-		console.log(e.target.classList);
-		e.target.classList.add("article__anchor_active");
-		console.log(this);
 	}
 
 	render() {
 		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
-		// let listItemClass = this.state.navExpanded ? "article__list-item_expanded" : "";
-		// let anchorItemClass = this.state.navExpanded ? "article__anchor_expanded" : "";
+		let listItemClass = this.state.navExpanded ? "article__list-item_expanded" : "";
+		let anchorItemClass = this.state.navExpanded ? "article__anchor_expanded" : "";
 		
 		console.log("navExpanded: ", this.state.navExpanded);
 
@@ -69,12 +74,12 @@ class ArticleComponent extends React.Component {
 				<div className="article__nav-container">
 					<nav className="article__nav" aria-label="article navigation">
 						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
-						<ul className="article__list article__list_expanded">
+						<ul className="article__list">
 							{/* <li className={`article__list-item article__list-item_active ${listItemClass}`}>
 								<a href="#" className={`article__anchor article__anchor_active ${anchorItemClass}`}
 								onClick={(e) => {this.handleListItemClick(e)}}>Checking</a>
-							</li> */}
-							{/* <li className={`article__list-item ${listItemClass}`}>
+							</li>
+							<li className={`article__list-item ${listItemClass}`}>
 								<a href="#" className={`article__anchor ${anchorItemClass}`}
 								onClick={(e) => {this.handleListItemClick(e)}}>Credit/Debit Cards</a>
 							</li>
@@ -82,9 +87,24 @@ class ArticleComponent extends React.Component {
 								<a href="#" className={`article__anchor ${anchorItemClass}`}
 								onClick={(e) => {this.handleListItemClick(e)}}>Certificates/IRAs/Trust</a>
 							</li> */}
-							<ListItem product="Checking" navExpanded={this.state.navExpanded} />
-							<ListItem product="Credit Cards" navExpanded={this.state.navExpanded} />
-							<ListItem product="Loans" navExpanded={this.state.navExpanded} />
+
+							<li className={`article__list-item`}>
+								<a href="#" className={`article__anchor article__anchor_active`}
+								onClick={(e) => this.handleListItemClick(e)}>Checking</a>
+							</li>
+							<li className={`article__list-item`}>
+								<a href="#" className={`article__anchor`}
+								onClick={(e) => this.handleListItemClick(e)}>Credit</a>
+							</li>
+							<li className={`article__list-item`}>
+								<a href="#" className={`article__anchor`}
+								onClick={(e) => this.handleListItemClick(e)}>Blah</a>
+							</li>
+
+							{/* {console.log(this)} */}
+							{/* <ListItem product="Checking" navExpanded={this.state.navExpanded} onClick={ArticleComponent.handleListItemClick} /> */}
+							{/* <ListItem product="Credit Cards" navExpanded={this.state.navExpanded} onClick={(e) => {this.handleListItemClick(e)}}/> */}
+							{/* <ListItem product="Loans" navExpanded={this.state.navExpanded} onClick={(e) => {this.handleListItemClick(e)}}/> */}
 						</ul>
 					</nav>
 
