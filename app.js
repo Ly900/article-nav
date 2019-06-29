@@ -25,33 +25,20 @@ class ArticleComponent extends React.Component {
 	}
 
 	handleListItemClick = (e) => {
-		let listItems;
+		let listItems = document.getElementsByClassName("article__anchor");
 
-		// If the nav is collapsed... 
+		// If the nav is collapsed, expand all the list items. 
 		if (!this.state.navExpanded) {
-			// listItems = document.getElementsByClassName("article__anchor");
-
-			listItems = document.getElementsByClassName("article__anchor");
-			console.log(listItems);
-
 			for (let listItem of listItems) {
 				listItem.classList.add("article__anchor_expanded");
 			}
-
 		}
-		
-		// If the nav is expanded...
+		// If the nav is expanded, display the list item that was clicked and collapse all the other list items.
 		else {
-			listItems = document.getElementsByClassName("article__anchor");
-
-			// Collapse all the other list items.
 			for (let listItem of listItems) {
 				listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
 			}
-
-			// Display the list item that was clicked.
 			e.target.classList.add("article__anchor_expanded", "article__anchor_active");
-
 		}
 
 		this.setState(prevState => ({
