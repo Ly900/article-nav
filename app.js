@@ -73,19 +73,6 @@ class ArticleComponent extends React.Component {
 					<nav className="article__nav" aria-label="article navigation">
 						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
-							{/* <li className={`article__list-item article__list-item_active ${listItemClass}`}>
-								<a href="#" className={`article__anchor article__anchor_active ${anchorItemClass}`}
-								onClick={(e) => {this.handleListItemClick(e)}}>Checking</a>
-							</li>
-							<li className={`article__list-item ${listItemClass}`}>
-								<a href="#" className={`article__anchor ${anchorItemClass}`}
-								onClick={(e) => {this.handleListItemClick(e)}}>Credit/Debit Cards</a>
-							</li>
-							<li className={`article__list-item ${listItemClass}`}>
-								<a href="#" className={`article__anchor ${anchorItemClass}`}
-								onClick={(e) => {this.handleListItemClick(e)}}>Certificates/IRAs/Trust</a>
-							</li> */}
-
 							<li className={`article__list-item`}>
 								<a href="#" className={`article__anchor article__anchor_active`}
 								onClick={(e) => this.handleListItemClick(e)}>Checking</a>
@@ -98,11 +85,6 @@ class ArticleComponent extends React.Component {
 								<a href="#" className={`article__anchor`}
 								onClick={(e) => this.handleListItemClick(e)}>Blah</a>
 							</li>
-
-							{/* {console.log(this)} */}
-							{/* <ListItem product="Checking" navExpanded={this.state.navExpanded} onClick={ArticleComponent.handleListItemClick} /> */}
-							{/* <ListItem product="Credit Cards" navExpanded={this.state.navExpanded} onClick={(e) => {this.handleListItemClick(e)}}/> */}
-							{/* <ListItem product="Loans" navExpanded={this.state.navExpanded} onClick={(e) => {this.handleListItemClick(e)}}/> */}
 						</ul>
 					</nav>
 
