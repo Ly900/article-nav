@@ -24,6 +24,21 @@ class ArticleComponent extends React.Component {
 		}
 	}
 
+	toggleNav = () => {
+		
+		this.setState(prevState => ({
+			navExpanded: !prevState.navExpanded
+		}));
+	}
+
+	// Set the state's activeCategory
+	setActiveCategory = () => {
+		const activeItem = document.getElementsByClassName("article__anchor_active");
+		this.setState({
+			activeCategory: activeItem[0].innerText
+		});
+	}
+
 	handleListItemClick = (e) => {
 		let listItems = document.getElementsByClassName("article__anchor");
 
@@ -33,25 +48,36 @@ class ArticleComponent extends React.Component {
 				listItem.classList.add("article__anchor_expanded");
 			}
 
-			this.setState(prevState => ({
-				navExpanded: !prevState.navExpanded
-			}));
+			this.toggleNav();
 
 		}
-		// If the nav is expanded, display the list item that was clicked and collapse all the other list items.
+
+		// If the nav is expanded... display the list item that was clicked and collapse all the other list items.
 		else {
-			for (let listItem of listItems) {
-				listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
+
+			// If a list item is clicked...
+			if ( e.target.classList.contains("article__anchor") ) {
+				for (let listItem of listItems) {
+					listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
+				}
+				e.target.classList.add("article__anchor_expanded", "article__anchor_active");
 			}
-			e.target.classList.add("article__anchor_expanded", "article__anchor_active");
 
-			// Set the state's activeCategory
-			const activeItem = document.getElementsByClassName("article__anchor_active");
+			// If the nav button was clicked...
+			if ( e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button") ) {
+				for (let listItem of listItems) {
+					if ( listItem.classList.contains("article__anchor_active") ) {
+						listItem.classList.add("article__anchor_expanded");
+					}
+					if ( !listItem.classList.contains("article__anchor_active") ) {
+						listItem.classList.remove("article__anchor_expanded");
+					}
+				}
+			}
 
-			this.setState(prevState => ({
-				navExpanded: !prevState.navExpanded,
-				activeCategory: activeItem[0].innerText
-			}));
+			this.setActiveCategory();
+
+			this.toggleNav();
 
 		}
 	}
@@ -71,7 +97,7 @@ class ArticleComponent extends React.Component {
 
 				<div className="article__nav-container">
 					<nav className="article__nav" aria-label="article navigation">
-						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
+						<button className="article__nav-button" onClick={(e) => this.handleListItemClick(e)}><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
 							<li className={`article__list-item`}>
 								<a href="#" className={`article__anchor article__anchor_active`}
