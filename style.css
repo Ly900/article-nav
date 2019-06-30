@@ -54,7 +54,7 @@ html {
   color: black;
   display: none; }
   .article__anchor:not(.article__anchor_active):hover {
-    background: #f3c758; }
+    background: #e9be55; }
 .article__anchor_active {
   display: block;
   background: #f5c959; }
