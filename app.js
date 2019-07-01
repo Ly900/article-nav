@@ -19,7 +19,7 @@ class ArticleComponent extends React.Component {
 		this.state = {
 			// navExpanded: false,
 			navExpanded: false,
-			activeCategory: "Finances",
+			activeCategory: "Checking",
 			activeListItem: null
 		}
 	}
