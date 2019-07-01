@@ -20,8 +20,19 @@ class ArticleComponent extends React.Component {
 			// navExpanded: false,
 			navExpanded: false,
 			activeCategory: "Checking",
-			activeListItem: null
+			activeListItem: null,
+			articles: null
 		}
+	}
+
+	componentDidMount() {
+		fetch("./article-feed.json")
+			.then(response => response.json())
+			.then(data => 
+				this.setState({ 
+					articles: data.articles 
+				})
+			)
 	}
 
 	toggleNav = () => {
@@ -84,10 +95,11 @@ class ArticleComponent extends React.Component {
 
 	render() {
 		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
-		let listItemClass = this.state.navExpanded ? "article__list-item_expanded" : "";
-		let anchorItemClass = this.state.navExpanded ? "article__anchor_expanded" : "";
-		
-		console.log("navExpanded: ", this.state.navExpanded);
+
+		const { articles } = this.state;
+
+		console.log(articles);
+
 
 		return(
 			<header className="article__header">
