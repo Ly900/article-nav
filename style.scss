@@ -70,9 +70,7 @@ html {
 		font-size: 1.5rem;
 	}
 	&__list-item {
-		&:hover {
 
-		}
 	}
 	&__list-item_expanded:not(:last-child) {
 		border-bottom: 2px solid $navBorderColor;
@@ -96,6 +94,9 @@ html {
 		display: block;
 		background: $activeListItem;
 		color: black;
+		&:hover {
+			letter-spacing: 3px;
+		}
 	}
 	&__anchor_expanded {
 		display: block;

@@ -65,6 +65,8 @@ html {
   display: block;
   background: #9FE985;
   color: black; }
+  .article__anchor_active:hover {
+    letter-spacing: 3px; }
 .article__anchor_expanded {
   display: block; }
 
