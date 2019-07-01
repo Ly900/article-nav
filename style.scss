@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,800');
 
 // Variables
-$navColor: #FDCF5C;
-$activeListItem: mix(#000, $navColor, 3%);
-$hoverListItem: mix(#000, $navColor, 8%);
+// $navColor: #FDCF5C;
+$navColor: #BA68C8;
+$teletubbyGreen: #CFFF67;
+// $activeListItem: mix(#000, $navColor, 3%);
+$activeListItem: #9FE985;
+// $hoverListItem: mix(#000, $navColor, 8%);
+$hoverListItem: $teletubbyGreen;
 $navBorderColor: mix(#000, $activeListItem, 1%);
 
 html,
@@ -74,19 +78,24 @@ html {
 		border-bottom: 2px solid $navBorderColor;
 	}
 	&__anchor {
-		padding: .25em .5em;
+		padding: .5em .5em;
 		text-decoration: none;
-		color: black;
+		color: white;
 		display: none;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		-webkit-font-smoothing: antialiased;
+		transition: all .5s;
 		&:not(.article__anchor_active):hover {
 			background: $hoverListItem;
-			// border-radius: 5px;
+			color: black;
+			letter-spacing: 3px;
 		}
 	}
 	&__anchor_active {
 		display: block;
 		background: $activeListItem;
-		// border-radius: 5px;
+		color: black;
 	}
 	&__anchor_expanded {
 		display: block;

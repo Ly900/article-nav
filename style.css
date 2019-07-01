@@ -26,7 +26,7 @@ html {
   margin: 0 auto;
   margin-bottom: 1em;
   font-size: 1.5rem;
-  background: #FDCF5C; }
+  background: #BA68C8; }
   @media screen and (min-width: 780px) {
     .article__nav {
       width: 50%; } }
@@ -47,17 +47,24 @@ html {
 .article__icon {
   font-size: 1.5rem; }
 .article__list-item_expanded:not(:last-child) {
-  border-bottom: 2px solid #f3c758; }
+  border-bottom: 2px solid #9de784; }
 .article__anchor {
-  padding: .25em .5em;
+  padding: .5em .5em;
   text-decoration: none;
-  color: black;
-  display: none; }
+  color: white;
+  display: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  transition: all .5s; }
   .article__anchor:not(.article__anchor_active):hover {
-    background: #e9be55; }
+    background: #CFFF67;
+    color: black;
+    letter-spacing: 3px; }
 .article__anchor_active {
   display: block;
-  background: #f5c959; }
+  background: #9FE985;
+  color: black; }
 .article__anchor_expanded {
   display: block; }
 
