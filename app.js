@@ -125,7 +125,7 @@ class ArticleComponent extends React.Component {
 								return(
 									<li key={key} className={`article__list-item`}>
 										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>
-											<img src={`./images/${key.category.toLowerCase()}.png`} class="article__list-item-img"/>
+											<picture class="article__list-item-picture"><img src={`./images/${key.category.toLowerCase()}.png`} class="article__list-item-img"/></picture>
 											<span class="article__list-item-category">{key.category}</span>
 										</a>
 									</li>

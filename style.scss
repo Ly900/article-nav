@@ -62,8 +62,8 @@ html {
 		top: 8px;
 		right: 6px;
 		padding: 1em;
-    margin: .1em;
-    background: none;
+		margin: .1em;
+		background: none;
 		border: none;
 		&:hover {
 			cursor: pointer;
@@ -75,9 +75,12 @@ html {
 	&__list-item {
 
 	}
+	&__list-item-picture {
+		width: 55px;
+		text-align: center;
+	}
 	&__list-item-img {
 		max-height: 40px;
-		margin-right: 10px;
 	}
 	&__list-item-category {
 
@@ -98,6 +101,10 @@ html {
 			background: $hoverListItem;
 			color: black;
 			letter-spacing: 3px;
+			.article__list-item-img {
+				transition: all 1s;
+				transform: scale(1.2);
+			}
 		}
 	}
 	&__anchor_active {

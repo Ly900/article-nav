@@ -48,9 +48,11 @@ html {
     cursor: pointer; }
 .article__icon {
   font-size: 1.5rem; }
+.article__list-item-picture {
+  width: 55px;
+  text-align: center; }
 .article__list-item-img {
-  max-height: 40px;
-  margin-right: 10px; }
+  max-height: 40px; }
 .article__list-item_expanded:not(:last-child) {
   border-bottom: 2px solid #9de784; }
 .article__anchor {
@@ -66,6 +68,9 @@ html {
     background: #CFFF67;
     color: black;
     letter-spacing: 3px; }
+    .article__anchor:not(.article__anchor_active):hover .article__list-item-img {
+      transition: all 1s;
+      transform: scale(1.2); }
 .article__anchor_active {
   display: flex;
   align-items: center;
