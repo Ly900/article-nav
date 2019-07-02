@@ -94,12 +94,16 @@ class ArticleComponent extends React.Component {
 		}
 	}
 
+	removeDuplicates(myArr, prop) {
+		return myArr.filter((obj, pos, arr) => {
+			return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+		});
+	}
+
 	render() {
 		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
-
-		console.log("Loading from render: ", this.state.loading);
-
-		let articlesArray = !this.state.loading ? Object.keys(this.state.articles) : "Loading";
+		let articlesArray = !this.state.loading ? Object.keys(this.state.articles).map((k) => this.state.articles[k]) : "Loading";
+		let uniqueCategories = !this.state.loading ? this.removeDuplicates(articlesArray, "category") : "";
 
 		return(
 			<header className="article__header">
@@ -112,11 +116,11 @@ class ArticleComponent extends React.Component {
 						<button className="article__nav-button" onClick={(e) => this.handleListItemClick(e)}><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
 							{
-							!this.state.loading ? articlesArray.map(key => {
-								let activeAnchorClass = parseInt(key) === 0 ? 'article__anchor_active' : "";
+							!this.state.loading ? uniqueCategories.map( (key, index) => {
+								let activeAnchorClass = index === 0 ? 'article__anchor_active' : "";
 								return(
 									<li key={key} className={`article__list-item`}>
-										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>{this.state.articles[key].category}</a>
+										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>{key.category}</a>
 									</li>
 								)
 							}) : " "
