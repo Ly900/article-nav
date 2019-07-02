@@ -100,6 +100,10 @@ class ArticleComponent extends React.Component {
 		});
 	}
 
+	getNavImage() {
+
+	}
+
 	render() {
 		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
 		let articlesArray = !this.state.loading ? Object.keys(this.state.articles).map((k) => this.state.articles[k]) : "Loading";
@@ -121,7 +125,7 @@ class ArticleComponent extends React.Component {
 								return(
 									<li key={key} className={`article__list-item`}>
 										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>
-											<img src="./images/rat.png" class="article__list-item-img"/>
+											<img src={`./images/${key.category.toLowerCase()}.png`} class="article__list-item-img"/>
 											<span class="article__list-item-category">{key.category}</span>
 										</a>
 									</li>
