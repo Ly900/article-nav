@@ -38,7 +38,7 @@ html {
   padding: 0; }
 .article__nav-button {
   position: absolute;
-  top: 0;
+  top: 8px;
   right: 6px;
   padding: 1em;
   margin: .1em;
@@ -48,6 +48,9 @@ html {
     cursor: pointer; }
 .article__icon {
   font-size: 1.5rem; }
+.article__list-item-img {
+  max-width: 40px;
+  margin-right: 10px; }
 .article__list-item_expanded:not(:last-child) {
   border-bottom: 2px solid #9de784; }
 .article__anchor {
@@ -64,12 +67,14 @@ html {
     color: black;
     letter-spacing: 3px; }
 .article__anchor_active {
-  display: block;
+  display: flex;
+  align-items: center;
   background: #9FE985;
   color: black; }
   .article__anchor_active:hover {
     letter-spacing: 3px; }
 .article__anchor_expanded {
-  display: block; }
+  display: flex;
+  align-items: center; }
 
 /*# sourceMappingURL=style.css.map */

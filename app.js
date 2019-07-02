@@ -120,7 +120,10 @@ class ArticleComponent extends React.Component {
 								let activeAnchorClass = index === 0 ? 'article__anchor_active' : "";
 								return(
 									<li key={key} className={`article__list-item`}>
-										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>{key.category}</a>
+										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>
+											<img src="./images/rat.png" class="article__list-item-img"/>
+											<span class="article__list-item-category">{key.category}</span>
+										</a>
 									</li>
 								)
 							}) : " "

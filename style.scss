@@ -59,7 +59,7 @@ html {
 	}
 	&__nav-button {
 		position: absolute;
-		top: 0;
+		top: 8px;
 		right: 6px;
 		padding: 1em;
     margin: .1em;
@@ -73,6 +73,13 @@ html {
 		font-size: 1.5rem;
 	}
 	&__list-item {
+
+	}
+	&__list-item-img {
+		max-width: 40px;
+		margin-right: 10px;
+	}
+	&__list-item-category {
 
 	}
 	&__list-item_expanded:not(:last-child) {
@@ -94,7 +101,8 @@ html {
 		}
 	}
 	&__anchor_active {
-		display: block;
+		display: flex;
+		align-items: center;
 		background: $activeListItem;
 		color: black;
 		&:hover {
@@ -102,6 +110,8 @@ html {
 		}
 	}
 	&__anchor_expanded {
-		display: block;
+		// display: block;
+		display: flex;
+		align-items: center;
 	}
 }
