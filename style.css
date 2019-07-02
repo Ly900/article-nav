@@ -18,6 +18,8 @@ html {
   font-weight: 800; }
 .article__breadcrumb {
   margin-bottom: 1em; }
+.article__category {
+  text-transform: uppercase; }
 .article__nav {
   border: none;
   position: relative;

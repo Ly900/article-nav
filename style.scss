@@ -35,6 +35,9 @@ html {
 	&__breadcrumb {
 		margin-bottom: 1em;
 	}
+	&__category {
+		text-transform: uppercase;
+	}
 	&__nav {
 		border: none;
 		position: relative;

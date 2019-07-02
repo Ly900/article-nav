@@ -1,6 +1,6 @@
 const BreadCrumb = (props) => {
 	return (
-		<div className="article__breadcrumb">Active nav item: <br/> <strong>{props.activeCategory}</strong> </div>
+		<div className="article__breadcrumb">Active nav item: <br/> <span class="article__category"><strong>{props.activeCategory}</strong></span> </div>
 	)
 }
 
@@ -18,10 +18,9 @@ class ArticleComponent extends React.Component {
 		super(props);
 		this.state = {
 			navExpanded: false,
-			activeCategory: "Checking",
-			activeListItem: null,
+			loading: true,
 			articles: null,
-			loading: true
+			activeCategory: ""
 		}
 	}
 
@@ -30,8 +29,9 @@ class ArticleComponent extends React.Component {
 			.then(response => response.json())
 			.then(data => {
 				this.setState({ 
+					loading: false,
 					articles: data.articles,
-					loading: false
+					activeCategory: data.articles[0].category
 				})
 			})
 	}
@@ -99,21 +99,7 @@ class ArticleComponent extends React.Component {
 
 		console.log("Loading from render: ", this.state.loading);
 
-		// if (!this.state.loading) {
-		// let dataArray = [];
-		// 	Object.keys(this.state.articles).forEach(function(key) {
-		// 		dataArray.push(this.state.articles[key])
-		// 	})
-		// 	console.log(dataArray);
-		// }
-
-		// !this.state.loading ? Object.keys(this.state.articles).map(art => {
-		// 	<p>art</p>
-		// }) : " "
-
-
-		// let articlesLoaded = !this.state.loading ? this.state.articles : "Loading";
-
+		let articlesArray = !this.state.loading ? Object.keys(this.state.articles) : "Loading";
 
 		return(
 			<header className="article__header">
@@ -126,7 +112,7 @@ class ArticleComponent extends React.Component {
 						<button className="article__nav-button" onClick={(e) => this.handleListItemClick(e)}><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
 							{
-							!this.state.loading ? Object.keys(this.state.articles).map(key => {
+							!this.state.loading ? articlesArray.map(key => {
 								let activeAnchorClass = parseInt(key) === 0 ? 'article__anchor_active' : "";
 								return(
 									<li key={key} className={`article__list-item`}>
