@@ -114,6 +114,7 @@ class ArticleComponent extends React.Component {
 
 		// let articlesLoaded = !this.state.loading ? this.state.articles : "Loading";
 
+
 		return(
 			<header className="article__header">
 
@@ -125,9 +126,14 @@ class ArticleComponent extends React.Component {
 						<button className="article__nav-button" onClick={(e) => this.handleListItemClick(e)}><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
 							{
-							!this.state.loading ? Object.keys(this.state.articles).map(art => (
-								<p key={art.id}>{this.state.articles[art].category}</p>
-							 )) : " " 
+							!this.state.loading ? Object.keys(this.state.articles).map(key => {
+								let activeAnchorClass = parseInt(key) === 0 ? 'article__anchor_active' : "";
+								return(
+									<li key={key} className={`article__list-item`}>
+										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>{this.state.articles[key].category}</a>
+									</li>
+								)
+							}) : " "
 							}
 							{/* { !this.state.loading ?
 								Object.keys(this.state.articles).map( article => {
