@@ -1,41 +1,49 @@
 {
 	"articles": [
 		{
+			"id": 1,
 			"title": "Why Cats Are the Best",
 			"author": "Ly Nguyen",
 			"category": "Cats"
 		},
 		{
+			"id": 2,
 			"title": "Dogs are OK",
 			"author": "Ly Nguyen",
 			"category": "Dogs"
 		},
 		{
+			"id": 3,
 			"title": "Horses Are the Worst",
 			"author": "Ly Nguyen",
 			"category": "Horses"
 		},
 		{
+			"id": 4,
 			"title": "How Cats Help You Live Longer",
 			"author": "Ly Nguyen",
 			"category": "Cats"
 		},
 		{
+			"id": 5,
 			"title": "Studies Show Looking at Cat Pictures Lowers Blood Pressure",
 			"author": "Ly Nguyen",
 			"category": "Cats"
 		},
 		{
+			"id": 6,
 			"title": "Dog Owners Get More Exercise Than Cat Owners",
 			"author": "Ly Nguyen",
 			"category": "Dogs"
 		},
 		{
+			"id": 7,
 			"title": "Why No One Can Afford a Horse",
 			"author": "Ly Nguyen",
 			"category": "Horses"
 		},
 		{
+			"id": 8,
 			"title": "Rats Are Gross",
 			"author": "Ly Nguyen",
 			"category": "Rats"

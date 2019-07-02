@@ -17,22 +17,23 @@ class ArticleComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			// navExpanded: false,
 			navExpanded: false,
 			activeCategory: "Checking",
 			activeListItem: null,
-			articles: null
+			articles: null,
+			loading: true
 		}
 	}
 
 	componentDidMount() {
 		fetch("./article-feed.json")
 			.then(response => response.json())
-			.then(data => 
+			.then(data => {
 				this.setState({ 
-					articles: data.articles 
+					articles: data.articles,
+					loading: false
 				})
-			)
+			})
 	}
 
 	toggleNav = () => {
@@ -96,10 +97,22 @@ class ArticleComponent extends React.Component {
 	render() {
 		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
 
-		const { articles } = this.state;
+		console.log("Loading from render: ", this.state.loading);
 
-		console.log(articles);
+		// if (!this.state.loading) {
+		// let dataArray = [];
+		// 	Object.keys(this.state.articles).forEach(function(key) {
+		// 		dataArray.push(this.state.articles[key])
+		// 	})
+		// 	console.log(dataArray);
+		// }
 
+		// !this.state.loading ? Object.keys(this.state.articles).map(art => {
+		// 	<p>art</p>
+		// }) : " "
+
+
+		// let articlesLoaded = !this.state.loading ? this.state.articles : "Loading";
 
 		return(
 			<header className="article__header">
@@ -111,7 +124,19 @@ class ArticleComponent extends React.Component {
 					<nav className="article__nav" aria-label="article navigation">
 						<button className="article__nav-button" onClick={(e) => this.handleListItemClick(e)}><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
-							<li className={`article__list-item`}>
+							{
+							!this.state.loading ? Object.keys(this.state.articles).map(art => (
+								<p key={art.id}>{this.state.articles[art].category}</p>
+							 )) : " " 
+							}
+							{/* { !this.state.loading ?
+								Object.keys(this.state.articles).map( article => {
+									<li key={article.id} className={`article__list-item`}>
+										<a href="#" className={`article__anchor article__anchor_active`} onClick={(e) => this.handleListItemClick(e)}>Hi</a>
+									</li>
+								}) : " "
+							} */}
+							{/* <li className={`article__list-item`}>
 								<a href="#" className={`article__anchor article__anchor_active`}
 								onClick={(e) => this.handleListItemClick(e)}>Checking</a>
 							</li>
@@ -122,7 +147,7 @@ class ArticleComponent extends React.Component {
 							<li className={`article__list-item`}>
 								<a href="#" className={`article__anchor`}
 								onClick={(e) => this.handleListItemClick(e)}>Blah</a>
-							</li>
+							</li> */}
 						</ul>
 					</nav>
 
