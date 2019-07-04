@@ -52,7 +52,9 @@ html {
   width: 55px;
   text-align: center; }
 .article__list-item-img {
-  max-height: 40px; }
+  max-height: 30px; }
+.article__list-item-category {
+  margin-left: 5px; }
 .article__list-item_expanded:not(:last-child) {
   border-bottom: 2px solid #9de784; }
 .article__anchor {

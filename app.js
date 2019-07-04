@@ -119,12 +119,17 @@ class ArticleComponent extends React.Component {
 					<nav className="article__nav" aria-label="article navigation">
 						<button className="article__nav-button" onClick={(e) => this.handleListItemClick(e)}><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
+							<li className={`article__list-item`}>
+								<a href="#" className="article__anchor article__anchor_active" onClick={(e) => this.handleListItemClick(e)}>
+									<picture class="article__list-item-picture"><img src={`./images/all.png`} class="article__list-item-img"/></picture>
+									<span class="article__list-item-category">All</span>
+								</a>
+							</li>
 							{
 							!this.state.loading ? uniqueCategories.map( (key, index) => {
-								let activeAnchorClass = index === 0 ? 'article__anchor_active' : "";
 								return(
 									<li key={key} className={`article__list-item`}>
-										<a href="#" className={`article__anchor ${activeAnchorClass}`} onClick={(e) => this.handleListItemClick(e)}>
+										<a href="#" className="article__anchor" onClick={(e) => this.handleListItemClick(e)}>
 											<picture class="article__list-item-picture"><img src={`./images/${key.category.toLowerCase()}.png`} class="article__list-item-img"/></picture>
 											<span class="article__list-item-category">{key.category}</span>
 										</a>

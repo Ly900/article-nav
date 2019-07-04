@@ -80,10 +80,10 @@ html {
 		text-align: center;
 	}
 	&__list-item-img {
-		max-height: 40px;
+		max-height: 30px;
 	}
 	&__list-item-category {
-
+		margin-left: 5px;
 	}
 	&__list-item_expanded:not(:last-child) {
 		border-bottom: 2px solid $navBorderColor;
