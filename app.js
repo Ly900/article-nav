@@ -13,6 +13,25 @@ const Heading = () => {
 	)
 }
 
+class ArticleTiles extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			navExpanded: false,
+			loading: true,
+			articles: null,
+			activeCategory: ""
+		}
+	}
+	render() {
+		return(
+			<div class="article-tiles">
+				<div class="tile">Hey</div>	
+			</div>
+		)
+	}
+}
+
 class ArticleComponent extends React.Component {
 	constructor(props) {
 		super(props);
@@ -33,11 +52,12 @@ class ArticleComponent extends React.Component {
 					articles: data.articles,
 					activeCategory: data.articles[0].category
 				})
+			}).then(stuff => {
+
 			})
 	}
 
 	toggleNav = () => {
-		
 		this.setState(prevState => ({
 			navExpanded: !prevState.navExpanded
 		}));
@@ -53,15 +73,14 @@ class ArticleComponent extends React.Component {
 
 	handleListItemClick = (e) => {
 		let listItems = document.getElementsByClassName("article__anchor");
+		console.log(e.target.textContent);
 
 		// If the nav is collapsed, expand all the list items. 
 		if (!this.state.navExpanded) {
 			for (let listItem of listItems) {
 				listItem.classList.add("article__anchor_expanded");
 			}
-
 			this.toggleNav();
-
 		}
 
 		// If the nav is expanded... display the list item that was clicked and collapse all the other list items.
@@ -100,10 +119,6 @@ class ArticleComponent extends React.Component {
 		});
 	}
 
-	getNavImage() {
-
-	}
-
 	render() {
 		let iconClassName = this.state.navExpanded ? "fa-chevron-up" : "fa-chevron-down";
 		let articlesArray = !this.state.loading ? Object.keys(this.state.articles).map((k) => this.state.articles[k]) : "Loading";
@@ -137,29 +152,12 @@ class ArticleComponent extends React.Component {
 								)
 							}) : " "
 							}
-							{/* { !this.state.loading ?
-								Object.keys(this.state.articles).map( article => {
-									<li key={article.id} className={`article__list-item`}>
-										<a href="#" className={`article__anchor article__anchor_active`} onClick={(e) => this.handleListItemClick(e)}>Hi</a>
-									</li>
-								}) : " "
-							} */}
-							{/* <li className={`article__list-item`}>
-								<a href="#" className={`article__anchor article__anchor_active`}
-								onClick={(e) => this.handleListItemClick(e)}>Checking</a>
-							</li>
-							<li className={`article__list-item`}>
-								<a href="#" className={`article__anchor`}
-								onClick={(e) => this.handleListItemClick(e)}>Credit</a>
-							</li>
-							<li className={`article__list-item`}>
-								<a href="#" className={`article__anchor`}
-								onClick={(e) => this.handleListItemClick(e)}>Blah</a>
-							</li> */}
 						</ul>
 					</nav>
 
 				</div>
+
+				<ArticleTiles/>
 
 			</header>
 		)
