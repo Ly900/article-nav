@@ -96,6 +96,12 @@ html {
     margin: 100px auto 0; }
   .article__tile {
     border: 1px solid red; }
+  .article__tile-picture {
+    width: 100%;
+    max-height: 100px;
+    overflow: hidden;
+    margin-bottom: 1em;
+    padding: .5em; }
   .article__tile-img {
     max-width: 100px; }
 
