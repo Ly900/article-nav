@@ -61,17 +61,6 @@ class ArticleComponent extends React.Component {
 		}
 	}
 
-	// handleClick = (e) => {
-	// 	let articleNav = document.getElementsByClassName(".article__nav");
-	// 	console.log(e.target);
-	// 	if ( e.target.closest(".article__nav") || !this.state.navExpanded) {
-	// 		return;
-	// 	}
-	// 	if (this.state.navExpanded) {
-	// 		this.toggleNav();
-	// 	}
-	// }
-
 	componentDidMount = () => {
 		fetch("./article-feed.json")
 			.then(response => response.json())
@@ -101,10 +90,6 @@ class ArticleComponent extends React.Component {
 	}
 
 	handleClick = (e) => {
-		// console.log(e.target);
-		// console.log("this.state.navExpanded: ", this.state.navExpanded);
-		// console.log(e.target.closest(".article__anchor"));
-
 		const listItems = document.getElementsByClassName("article__anchor");
 		const buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
 
@@ -122,14 +107,12 @@ class ArticleComponent extends React.Component {
 					listItem.classList.add("article__anchor_expanded");
 				}
 				this.toggleNav();
-				// console.log("this.state.navExpanded: ", this.state.navExpanded);
 			}
 			return;
 		}
 
 		// If the nav is expanded... 
 		let closestListItem = e.target.closest(".article__anchor");
-		// console.log(e.target);
 
 		// If an element inside the nav was clicked...
 		if ( closestListItem ) {
