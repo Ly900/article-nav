@@ -146,18 +146,19 @@ html {
 		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 		margin: .5em;
 		padding: 0;
+		min-width: 200px;
 	}
 	&__tile-picture {
 		width: 100%;
 		max-height: 100px;
 		overflow: hidden;
-		margin-bottom: 1em;
+		margin-bottom: .5em;
 		padding: 0;
 		background: $teletubbyGreen;
 	}
 	&__tile-content {
 		display: block;
-		padding: .5em;
+		padding: 0 .5em;
 		&:last-child {
 			padding-bottom: 1em;
 		}
