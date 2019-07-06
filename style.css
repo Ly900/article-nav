@@ -44,7 +44,6 @@ html {
   position: absolute;
   top: 8px;
   right: 6px;
-  padding: 1em;
   margin: .1em;
   background: none;
   border: none; }
@@ -73,7 +72,8 @@ html {
   .article__anchor:not(.article__anchor_active):hover {
     background: #CFFF67;
     color: black;
-    letter-spacing: 3px; }
+    letter-spacing: 3px;
+    text-decoration: none; }
     .article__anchor:not(.article__anchor_active):hover .article__list-item-img {
       transition: all 1s;
       transform: scale(1.2); }
@@ -83,7 +83,8 @@ html {
   background: #9FE985;
   color: black; }
   .article__anchor_active:hover {
-    letter-spacing: 3px; }
+    letter-spacing: 3px;
+    text-decoration: none; }
 .article__anchor_expanded {
   display: flex;
   align-items: center; }

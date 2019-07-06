@@ -36,7 +36,7 @@ class ArticleTiles extends React.Component {
 	render() {
 
 		return(
-			<div class="article-tiles">
+			<div class="container-fluid article-tiles">
 				
 					{ !this.state.loading && 
 						this.state.articles.map( article => {

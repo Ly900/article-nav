@@ -66,7 +66,6 @@ html {
 		position: absolute;
 		top: 8px;
 		right: 6px;
-		padding: 1em;
 		margin: .1em;
 		background: none;
 		border: none;
@@ -106,6 +105,7 @@ html {
 			background: $hoverListItem;
 			color: black;
 			letter-spacing: 3px;
+			text-decoration: none;
 			.article__list-item-img {
 				transition: all 1s;
 				transform: scale(1.2);
@@ -119,6 +119,7 @@ html {
 		color: black;
 		&:hover {
 			letter-spacing: 3px;
+			text-decoration: none;
 		}
 	}
 	&__anchor_expanded {
