@@ -23,19 +23,23 @@ html {
   .article__category {
     text-transform: uppercase; }
   .article__nav-container {
-    position: fixed;
+    position: relative;
     width: 100%;
     cursor: pointer;
     z-index: 2; }
   .article__nav {
     border: none;
-    position: relative;
+    position: absolute;
     text-align: left;
-    width: 100%;
+    width: 50%;
     margin: 0 auto;
     margin-bottom: 1em;
     font-size: 1.5rem;
-    background: #BA68C8; }
+    background: #BA68C8;
+    min-width: 226px;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%); }
     @media screen and (min-width: 780px) {
       .article__nav {
         width: 50%; } }
@@ -106,15 +110,17 @@ html {
     overflow: hidden;
     margin-bottom: 1em;
     padding: 0;
-    background: #eee; }
+    background: #CFFF67; }
   .article__tile-content {
     display: block;
     padding: .5em; }
     .article__tile-content:last-child {
       padding-bottom: 1em; }
   .article__tile-img {
-    max-width: 100px; }
+    padding: 0.8em;
+    max-height: 100px; }
   .article__tile-category {
-    padding: .25em; }
+    padding: .25em;
+    text-transform: uppercase; }
 
 /*# sourceMappingURL=style.css.map */

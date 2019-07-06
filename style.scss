@@ -40,21 +40,24 @@ html {
 		text-transform: uppercase;
 	}
 	&__nav-container {
-		position: fixed;
+		position: relative;
 		width: 100%;
 		cursor: pointer;
 		z-index: 2;
 	}
 	&__nav {
 		border: none;
-		position: relative;
+		position: absolute;
 		text-align: left;
-		width: 100%;
+		width: 50%;
 		margin: 0 auto;
 		margin-bottom: 1em;
 		font-size: 1.5rem;
-		background: $navColor;
-		// border-radius: 5px;
+		background: #BA68C8;
+		min-width: 226px;
+		max-width: 500px;
+		left: 50%;
+		transform: translateX(-50%);
 		@media screen and (min-width: 780px) {
 			width: 50%;
 		}
@@ -149,7 +152,7 @@ html {
 		overflow: hidden;
 		margin-bottom: 1em;
 		padding: 0;
-		background: #eee;
+		background: $teletubbyGreen;
 	}
 	&__tile-content {
 		display: block;
@@ -159,9 +162,11 @@ html {
 		}
 	}
 	&__tile-img {
-		max-width: 100px;
+		padding: 0.8em;
+		max-height: 100px;
 	}
 	&__tile-category {
 		padding: .25em;
+		text-transform: uppercase;
 	}
 }
