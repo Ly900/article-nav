@@ -14,7 +14,7 @@ const Heading = () => {
 }
 
 const ArticleTile = (props) => {
-	console.log("props.category: ", props.article.category);
+	// console.log("props.article", props.article.id);
 	return(
 		<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={props.article.id}>
 			<picture class="article__tile-picture"><img src={`./images/${props.article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
@@ -25,24 +25,22 @@ const ArticleTile = (props) => {
 }
 
 const ArticleTiles = (props) => {
-		// console.log(props);
-		// console.log("props.activeCategory: ", props.activeCategory );
 		return(
 			<div class="container-fluid article__tiles">
 				<div class="row">
-					{ props.articles.map( article => {
 
-							if (props.activeCategory.toLowerCase() !== "all") {
-								if (article.category.toLowerCase() === props.activeCategory.toLowerCase()) {
-									return (
-										<ArticleTile article={article} />
-									)
-								}
-								return;
-							}
+					{ props.articles.map( article => {
+						if (props.activeCategory.toLowerCase().trim() !== "all") {
+							if ( article.category.toLowerCase().trim() === props.activeCategory.toLowerCase().trim() ) {
 								return (
 									<ArticleTile article={article} />
 								)
+							}
+						} else {
+							return (
+								<ArticleTile article={article} />
+							)
+						}
 
 						})
 					}
