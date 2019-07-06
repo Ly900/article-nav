@@ -43,6 +43,7 @@ html {
 		position: fixed;
 		width: 100%;
 		cursor: pointer;
+		z-index: 2;
 	}
 	&__nav {
 		border: none;
@@ -132,6 +133,8 @@ html {
 		// border: 1px solid black;
 		max-width: 1120px;
 		margin: 100px auto 0;
+		position: relative;
+		z-index: 1;
 	}
 	&__tile {
 		// border: 1px solid red;
