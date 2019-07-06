@@ -41,10 +41,10 @@ class ArticleTiles extends React.Component {
 					{ !this.state.loading && 
 						this.state.articles.map( article => {
 							return (
-								<div class="col article__tile d-flex flex-column justify-content-between" key={article.id}>
+								<div class="col article__tile d-flex flex-column align-items-center justify-content-start" key={article.id}>
 									<picture class="article__tile-picture"><img src={`./images/${article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
-									{article.category}
-									<strong>{article.title}</strong><br/>
+									<span class="article__tile-content article__tile-category">{article.category}</span>
+									<span class="article__tile-content article__tile-title"><strong>{article.title}</strong></span>
 								</div>
 							)
 						})

@@ -129,21 +129,36 @@ html {
 		align-items: center;
 	}
 	&__tiles {
-		border: 1px solid black;
+		// border: 1px solid black;
 		max-width: 1120px;
 		margin: 100px auto 0;
 	}
 	&__tile {
-		border: 1px solid red;
+		// border: 1px solid red;
+		// box-shadow: 0 3px 2px rgba(0,0,0,0.16);
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		margin: .5em;
+		padding: 0;
 	}
 	&__tile-picture {
 		width: 100%;
 		max-height: 100px;
 		overflow: hidden;
 		margin-bottom: 1em;
+		padding: 0;
+		background: #eee;
+	}
+	&__tile-content {
+		display: block;
 		padding: .5em;
+		&:last-child {
+			padding-bottom: 1em;
+		}
 	}
 	&__tile-img {
 		max-width: 100px;
+	}
+	&__tile-category {
+		padding: .25em;
 	}
 }
