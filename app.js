@@ -14,6 +14,7 @@ const Heading = () => {
 }
 
 const ArticleTile = (props) => {
+	console.log("props.category: ", props.article.category);
 	return(
 		<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={props.article.id}>
 			<picture class="article__tile-picture"><img src={`./images/${props.article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
@@ -23,35 +24,16 @@ const ArticleTile = (props) => {
 	)
 }
 
-class ArticleTiles extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			loading: true,
-			articles: null,
-			activeCategory: ""
-		}
-	}
-
-	displayTiles(cat) {
-		// console.log("active category: ", this.props.activeCategory);
-		// console.log("articles: ", this.props.articles);
-		this.setState({
-			loading: false
-		})
-	}
-
-	render() {
-		let activeCategory = this.props.activeCategory.toLowerCase();
-		let articles = this.props.articles;
-
+const ArticleTiles = (props) => {
+		// console.log(props);
+		// console.log("props.activeCategory: ", props.activeCategory );
 		return(
 			<div class="container-fluid article__tiles">
 				<div class="row">
-					{ !this.state.loading && articles.map( article => {
+					{ props.articles.map( article => {
 
-							if (activeCategory !== "all") {
-								if (article.category.toLowerCase() === activeCategory) {
+							if (props.activeCategory.toLowerCase() !== "all") {
+								if (article.category.toLowerCase() === props.activeCategory.toLowerCase()) {
 									return (
 										<ArticleTile article={article} />
 									)
@@ -68,7 +50,7 @@ class ArticleTiles extends React.Component {
 			</div>
 		)
 	}
-}
+// }
 
 class ArticleComponent extends React.Component {
 	constructor(props) {
@@ -90,7 +72,7 @@ class ArticleComponent extends React.Component {
 					articles: data.articles,
 					activeCategory: "All"
 				})
-				this.refs.tiles.displayTiles(this.state.activeCategory)
+				// this.refs.tiles.displayTiles()
 			})
 	}
 
@@ -193,8 +175,15 @@ class ArticleComponent extends React.Component {
 					</nav>
 
 				</div>
+				
+				{
+					!this.state.loading ? <ArticleTiles activeCategory={this.state.activeCategory} articles={this.state.articles} loading={this.state.loading}/> : ""
+				}
 
-				<ArticleTiles ref="tiles" activeCategory={this.state.activeCategory} articles={this.state.articles}/>
+				
+
+				
+				{/* <ArticleTiles displayTiles={}/> */}
 
 			</header>
 		)
