@@ -27,9 +27,7 @@ class ArticleTiles extends React.Component {
 		console.log("active category: ", this.props.activeCategory);
 		console.log("articles: ", this.props.articles);
 		this.setState({
-			loading: false,
-			articles: this.props.articles,
-			activeCategory: this.props.activeCategory
+			loading: false
 		})
 	}
 
@@ -39,14 +37,30 @@ class ArticleTiles extends React.Component {
 			<div class="container-fluid article__tiles">
 				<div class="row">
 					{ !this.state.loading && 
-						this.state.articles.map( article => {
-							return (
-								<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={article.id}>
-									<picture class="article__tile-picture"><img src={`./images/${article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
-									<span class="article__tile-content article__tile-category">{article.category}</span>
-									<span class="article__tile-content article__tile-title"><strong>{article.title}</strong></span>
-								</div>
-							)
+						this.props.articles.map( article => {
+							console.log("active category: ", this.props.activeCategory);
+							if (this.props.activeCategory !== "All") {
+						
+								if (article.category.toLowerCase() === this.props.activeCategory.toLowerCase()) {
+									return (
+										<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={article.id}>
+											<picture class="article__tile-picture"><img src={`./images/${article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
+											<span class="article__tile-content article__tile-category">{article.category}</span>
+											<span class="article__tile-content article__tile-title"><strong>{article.title}</strong></span>
+										</div>
+									)
+								}
+								return;
+							} else {
+								return (
+									<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={article.id}>
+										<picture class="article__tile-picture"><img src={`./images/${article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
+										<span class="article__tile-content article__tile-category">{article.category}</span>
+										<span class="article__tile-content article__tile-title"><strong>{article.title}</strong></span>
+									</div>
+								)
+							}
+
 						})
 					}
 				</div>
