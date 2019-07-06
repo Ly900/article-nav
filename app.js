@@ -61,6 +61,17 @@ class ArticleComponent extends React.Component {
 		}
 	}
 
+	// handleClick = (e) => {
+	// 	let articleNav = document.getElementsByClassName(".article__nav");
+	// 	console.log(e.target);
+	// 	if ( e.target.closest(".article__nav") || !this.state.navExpanded) {
+	// 		return;
+	// 	}
+	// 	if (this.state.navExpanded) {
+	// 		this.toggleNav();
+	// 	}
+	// }
+
 	componentDidMount = () => {
 		fetch("./article-feed.json")
 			.then(response => response.json())
@@ -68,9 +79,10 @@ class ArticleComponent extends React.Component {
 				this.setState({ 
 					loading: false,
 					articles: data.articles,
-					activeCategory: "All"
+					activeCategory: "All",
+					navExpanded: false
 				})
-				// this.refs.tiles.displayTiles()
+				document.addEventListener("mousedown", this.handleClick, false)
 			})
 	}
 
@@ -88,25 +100,32 @@ class ArticleComponent extends React.Component {
 		});
 	}
 
-	handleListItemClick = (e) => {
+	handleClick = (e) => {
+		console.log(e.target);
+		console.log("this.state.navExpanded: ", this.state.navExpanded);
+
 		const listItems = document.getElementsByClassName("article__anchor");
 
-		// If the nav is collapsed, expand all the list items. 
-		if (!this.state.navExpanded) {
-			for (let listItem of listItems) {
-				listItem.classList.add("article__anchor_expanded");
+		// If the nav is collapsed and the nav was clicked, expand all the list items. 
+		if (!this.state.navExpanded && e.button === 0) {
+			let closestListItem = e.target.closest(".article__anchor");
+			if ( closestListItem ) {
+				for (let listItem of listItems) {
+					listItem.classList.add("article__anchor_expanded");
+				}
+				this.toggleNav();
+				console.log("this.state.navExpanded: ", this.state.navExpanded);
 			}
-			this.toggleNav();
 		}
 
 		// If the nav is expanded... display the list item that was clicked and collapse all the other list items.
 		else {
 
-			// If a list item is clicked...
 			let closestListItem = e.target.closest(".article__anchor");
+			console.log(e.target);
 
+			// If an element inside the nav was clicked...
 			if ( closestListItem ) {
-				
 				for (let listItem of listItems) {
 					listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
 				}
@@ -151,10 +170,11 @@ class ArticleComponent extends React.Component {
 
 				<div className="article__nav-container">
 					<nav className="article__nav" aria-label="article navigation">
-						<button className="article__nav-button" onClick={(e) => this.handleListItemClick(e)}><i className={`fas ${iconClassName} article__icon`}></i></button>
+						<button className="article__nav-button"><i className={`fas ${iconClassName} article__icon`}></i></button>
 						<ul className="article__list">
 							<li className={`article__list-item`}>
-								<a href="#" className="article__anchor article__anchor_active" onClick={(e) => this.handleListItemClick(e)}>
+								{/* <a href="#" className="article__anchor article__anchor_active" onClick={(e) => this.handleClick(e)}> */}
+								<a href="#" className="article__anchor article__anchor_active">
 									<picture class="article__list-item-picture"><img src={`./images/all.png`} class="article__list-item-img"/></picture>
 									<span class="article__list-item-category">All</span>
 								</a>
@@ -163,7 +183,8 @@ class ArticleComponent extends React.Component {
 							!this.state.loading ? uniqueCategories.map( (key, index) => {
 								return(
 									<li key={key} className={`article__list-item`}>
-										<a href="#" className="article__anchor" onClick={(e) => this.handleListItemClick(e)}>
+										{/* <a href="#" className="article__anchor" onClick={(e) => this.handleClick(e)}> */}
+										<a href="#" className="article__anchor">
 											<picture class="article__list-item-picture"><img src={`./images/${key.category.toLowerCase()}.png`} class="article__list-item-img"/></picture>
 											<span class="article__list-item-category">{key.category}</span>
 										</a>
