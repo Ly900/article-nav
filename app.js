@@ -101,9 +101,9 @@ class ArticleComponent extends React.Component {
 	}
 
 	handleClick = (e) => {
-		console.log(e.target);
-		console.log("this.state.navExpanded: ", this.state.navExpanded);
-		console.log(e.target.closest(".article__anchor"));
+		// console.log(e.target);
+		// console.log("this.state.navExpanded: ", this.state.navExpanded);
+		// console.log(e.target.closest(".article__anchor"));
 
 		const listItems = document.getElementsByClassName("article__anchor");
 		const buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
@@ -143,6 +143,17 @@ class ArticleComponent extends React.Component {
 
 		// If the nav button was clicked...
 		if ( buttonClicked ) {
+			for (let listItem of listItems) {
+				if ( listItem.classList.contains("article__anchor_active") ) {
+					listItem.classList.add("article__anchor_expanded");
+				} else {
+					listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
+				}
+			}
+			this.toggleNav();
+		}
+
+		if ( !closestListItem && !buttonClicked ) {
 			for (let listItem of listItems) {
 				if ( listItem.classList.contains("article__anchor_active") ) {
 					listItem.classList.add("article__anchor_expanded");
