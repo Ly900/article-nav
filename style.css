@@ -92,7 +92,8 @@ html {
     color: black; }
     .article__anchor_active:hover {
       letter-spacing: 3px;
-      text-decoration: none; }
+      text-decoration: none;
+      color: #000; }
   .article__anchor_expanded {
     display: flex;
     align-items: center; }

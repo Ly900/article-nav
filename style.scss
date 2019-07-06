@@ -2,7 +2,8 @@
 
 // Variables
 // $navColor: #FDCF5C;
-$navColor: #BA68C8;
+$purple: #BA68C8;
+$navColor: $purple;
 $teletubbyGreen: #CFFF67;
 // $activeListItem: mix(#000, $navColor, 3%);
 $activeListItem: #9FE985;
@@ -126,6 +127,7 @@ html {
 		&:hover {
 			letter-spacing: 3px;
 			text-decoration: none;
+			color: #000;
 		}
 	}
 	&__anchor_expanded {
