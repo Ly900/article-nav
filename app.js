@@ -90,8 +90,8 @@ class ArticleComponent extends React.Component {
 		});
 	}
 
-	closeNav = () => {
-		let listItems = document.getElementsByClassName("article__anchor");
+	closeNav = (e, listItems) => {
+		// let listItems = document.getElementsByClassName("article__anchor");
 		for (let listItem of listItems) {
 			if ( listItem.classList.contains("article__anchor_active") ) {
 				listItem.classList.add("article__anchor_expanded");
@@ -101,16 +101,73 @@ class ArticleComponent extends React.Component {
 		}
 	}
 
+	openNav = (e, listItems) => {
+		// let listItems = document.getElementsByClassName("article__anchor");
+		let closestListItem = e.target.closest(".article__anchor");
+		let buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
+		
+		if ( closestListItem || buttonClicked) {
+			for (let listItem of listItems) {
+				listItem.classList.add("article__anchor_expanded");
+			}
+			this.toggleNav();
+		}
+		return;
+	}
+
 	handleKeyPress = (e) => {
-		if (this.state.navExpanded && e.keyCode === 27) {
-		this.closeNav();
-		this.toggleNav();
+		let listItems = document.getElementsByClassName("article__anchor");
+		let closestListItem = e.target.closest(".article__anchor");
+		let buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
+
+		let escapeBtnClicked = e.keyCode === 27;
+		let spacebarClicked = e.keyCode === 32;
+		let enterKeyClicked = e.keyCode === 13;
+
+		if (escapeBtnClicked) {
+			this.closeNav(e, listItems);
+			this.toggleNav();
+			return;
+		} 
+
+		if ( spacebarClicked || enterKeyClicked ) {
+
+			// If the nav is collapsed, expand all the list items. 
+			if (!this.state.navExpanded) {
+				this.openNav(e, listItems);
+				return;
+			}
+
+			// If the nav is expanded... 
+			this.closeNav(e, listItems);
+
+			// If an element inside the nav was selected...
+			if ( closestListItem ) {
+				this.chooseNewCategory(closestListItem, listItems);
+			}
+
+			// If the nav button or an area outside the nav is clicked, close the nav.
+			if ( buttonClicked || !closestListItem) {
+				this.closeNav(e, listItems);
+				this.toggleNav();
+			}
 		}
 	}
 
+	chooseNewCategory = (closestListItem, listItems) => {
+		for (let listItem of listItems) {
+			listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
+		}
+		closestListItem.classList.add("article__anchor_expanded", "article__anchor_active");
+		this.setActiveCategory();
+		this.toggleNav();
+	}
+
 	handleClick = (e) => {
+		// console.log(e.target);
 		let listItems = document.getElementsByClassName("article__anchor");
-		const buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
+		let closestListItem = e.target.closest(".article__anchor");
+		let buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
 
 		// If the left mouse button was not clicked, return and do nothing.
 		if (e.button !== 0) {
@@ -119,33 +176,21 @@ class ArticleComponent extends React.Component {
 
 		// If the nav is collapsed, expand all the list items. 
 		if (!this.state.navExpanded) {
-			let closestListItem = e.target.closest(".article__anchor");
-		
-			if ( closestListItem || buttonClicked) {
-				for (let listItem of listItems) {
-					listItem.classList.add("article__anchor_expanded");
-				}
-				this.toggleNav();
-			}
+			this.openNav(e, listItems);
 			return;
 		}
 
 		// If the nav is expanded... 
-		let closestListItem = e.target.closest(".article__anchor");
+		this.closeNav(e, listItems);
 
 		// If an element inside the nav was clicked...
 		if ( closestListItem ) {
-			for (let listItem of listItems) {
-				listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
-			}
-			closestListItem.classList.add("article__anchor_expanded", "article__anchor_active");
-			this.setActiveCategory();
-			this.toggleNav();
+			this.chooseNewCategory(closestListItem, listItems);
 		}
 
 		// If the nav button or an area outside the nav is clicked, close the nav.
 		if ( buttonClicked || !closestListItem) {
-			this.closeNav();
+			this.closeNav(e, listItems);
 			this.toggleNav();
 		}
 
@@ -174,7 +219,7 @@ class ArticleComponent extends React.Component {
 						<ul className="article__list">
 							<li className={`article__list-item`}>
 								{/* <a href="#" className="article__anchor article__anchor_active" onClick={(e) => this.handleClick(e)}> */}
-								<a href="#" className="article__anchor article__anchor_active">
+								<a href="#" role="button" className="article__anchor article__anchor_active">
 									<picture class="article__list-item-picture"><img src={`./images/all.png`} class="article__list-item-img"/></picture>
 									<span class="article__list-item-category">All</span>
 								</a>
@@ -184,7 +229,7 @@ class ArticleComponent extends React.Component {
 								return(
 									<li key={key} className={`article__list-item`}>
 										{/* <a href="#" className="article__anchor" onClick={(e) => this.handleClick(e)}> */}
-										<a href="#" className="article__anchor">
+										<a href="#" role="button" className="article__anchor">
 											<picture class="article__list-item-picture"><img src={`./images/${key.category.toLowerCase()}.png`} class="article__list-item-img"/></picture>
 											<span class="article__list-item-category">{key.category}</span>
 										</a>
@@ -200,11 +245,6 @@ class ArticleComponent extends React.Component {
 				{
 					!this.state.loading ? <ArticleTiles activeCategory={this.state.activeCategory} articles={this.state.articles} loading={this.state.loading}/> : ""
 				}
-
-				
-
-				
-				{/* <ArticleTiles displayTiles={}/> */}
 
 			</header>
 		)

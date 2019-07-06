@@ -69,6 +69,7 @@ html {
   .article__list-item_expanded:not(:last-child) {
     border-bottom: 2px solid #9de784; }
   .article__anchor {
+    width: 100%;
     padding: .5em .5em;
     text-decoration: none;
     color: white;
@@ -76,7 +77,8 @@ html {
     font-size: 1.2rem;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
-    transition: all .5s; }
+    transition: all .5s;
+    background: #BA68C8; }
     .article__anchor:not(.article__anchor_active):hover {
       background: #CFFF67;
       color: black;
