@@ -12,89 +12,91 @@ html {
   font-family: 'Nunito', sans-serif;
   font-size: 16px; }
 
-.article__header {
-  text-align: center; }
-.article__heading {
-  font-weight: 800; }
-.article__breadcrumb {
-  margin-bottom: 1em; }
-.article__category {
-  text-transform: uppercase; }
-.article__nav-container {
-  position: fixed;
-  width: 100%;
-  cursor: pointer; }
-.article__nav {
-  border: none;
-  position: relative;
-  text-align: left;
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 1em;
-  font-size: 1.5rem;
-  background: #BA68C8; }
-  @media screen and (min-width: 780px) {
-    .article__nav {
-      width: 50%; } }
-.article__list {
-  list-style-type: none;
-  border: none;
-  padding: 0; }
-.article__nav-button {
-  position: absolute;
-  top: 8px;
-  right: 6px;
-  margin: .1em;
-  background: none;
-  border: none; }
-  .article__nav-button:hover {
+.article {
+  padding: 1em; }
+  .article__header {
+    text-align: center; }
+  .article__heading {
+    font-weight: 800; }
+  .article__breadcrumb {
+    margin-bottom: 1em; }
+  .article__category {
+    text-transform: uppercase; }
+  .article__nav-container {
+    position: fixed;
+    width: 100%;
     cursor: pointer; }
-.article__icon {
-  font-size: 1.5rem; }
-.article__list-item-picture {
-  width: 55px;
-  text-align: center; }
-.article__list-item-img {
-  max-height: 30px; }
-.article__list-item-category {
-  margin-left: 5px; }
-.article__list-item_expanded:not(:last-child) {
-  border-bottom: 2px solid #9de784; }
-.article__anchor {
-  padding: .5em .5em;
-  text-decoration: none;
-  color: white;
-  display: none;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  -webkit-font-smoothing: antialiased;
-  transition: all .5s; }
-  .article__anchor:not(.article__anchor_active):hover {
-    background: #CFFF67;
-    color: black;
-    letter-spacing: 3px;
-    text-decoration: none; }
-    .article__anchor:not(.article__anchor_active):hover .article__list-item-img {
-      transition: all 1s;
-      transform: scale(1.2); }
-.article__anchor_active {
-  display: flex;
-  align-items: center;
-  background: #9FE985;
-  color: black; }
-  .article__anchor_active:hover {
-    letter-spacing: 3px;
-    text-decoration: none; }
-.article__anchor_expanded {
-  display: flex;
-  align-items: center; }
-.article__tiles {
-  border: 1px solid black;
-  max-width: 1120px;
-  margin: 100px auto 0; }
-.article__tile {
-  border: 1px solid red; }
-.article__tile-img {
-  max-width: 100px; }
+  .article__nav {
+    border: none;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    font-size: 1.5rem;
+    background: #BA68C8; }
+    @media screen and (min-width: 780px) {
+      .article__nav {
+        width: 50%; } }
+  .article__list {
+    list-style-type: none;
+    border: none;
+    padding: 0; }
+  .article__nav-button {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    margin: .1em;
+    background: none;
+    border: none; }
+    .article__nav-button:hover {
+      cursor: pointer; }
+  .article__icon {
+    font-size: 1.5rem; }
+  .article__list-item-picture {
+    width: 55px;
+    text-align: center; }
+  .article__list-item-img {
+    max-height: 30px; }
+  .article__list-item-category {
+    margin-left: 5px; }
+  .article__list-item_expanded:not(:last-child) {
+    border-bottom: 2px solid #9de784; }
+  .article__anchor {
+    padding: .5em .5em;
+    text-decoration: none;
+    color: white;
+    display: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    transition: all .5s; }
+    .article__anchor:not(.article__anchor_active):hover {
+      background: #CFFF67;
+      color: black;
+      letter-spacing: 3px;
+      text-decoration: none; }
+      .article__anchor:not(.article__anchor_active):hover .article__list-item-img {
+        transition: all 1s;
+        transform: scale(1.2); }
+  .article__anchor_active {
+    display: flex;
+    align-items: center;
+    background: #9FE985;
+    color: black; }
+    .article__anchor_active:hover {
+      letter-spacing: 3px;
+      text-decoration: none; }
+  .article__anchor_expanded {
+    display: flex;
+    align-items: center; }
+  .article__tiles {
+    border: 1px solid black;
+    max-width: 1120px;
+    margin: 100px auto 0; }
+  .article__tile {
+    border: 1px solid red; }
+  .article__tile-img {
+    max-width: 100px; }
 
 /*# sourceMappingURL=style.css.map */
