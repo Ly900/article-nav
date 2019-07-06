@@ -17,20 +17,35 @@ class ArticleTiles extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			articles: null,
 			loading: true,
+			articles: null,
 			activeCategory: ""
 		}
 	}
 
 	displayTiles(cat) {
 		console.log("active category: ", this.props.activeCategory);
+		console.log("articles: ", this.props.articles);
+		this.setState({
+			loading: false,
+			articles: this.props.articles,
+			activeCategory: this.props.activeCategory
+		})
 	}
 
 	render() {
+
 		return(
 			<div class="article-tiles">
-				<div class="tile">{this.props.activeCategory}</div>
+				
+					{ !this.state.loading && 
+						this.state.articles.map( article => {
+							return (
+								<div class="tile" key={article.id}>{article.title}</div>
+							)
+						})
+					}
+
 			</div>
 		)
 	}
@@ -162,7 +177,7 @@ class ArticleComponent extends React.Component {
 
 				</div>
 
-				<ArticleTiles ref="tiles" activeCategory={this.state.activeCategory} />
+				<ArticleTiles ref="tiles" activeCategory={this.state.activeCategory} articles={this.state.articles}/>
 
 			</header>
 		)
