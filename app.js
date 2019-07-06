@@ -90,7 +90,7 @@ class ArticleComponent extends React.Component {
 
 	handleListItemClick = (e) => {
 		let listItems = document.getElementsByClassName("article__anchor");
-		// console.log(e.target.textContent);
+		console.log("e.target: ", e.target);
 
 		// If the nav is collapsed, expand all the list items. 
 		if (!this.state.navExpanded) {
@@ -104,11 +104,14 @@ class ArticleComponent extends React.Component {
 		else {
 
 			// If a list item is clicked...
-			if ( e.target.classList.contains("article__anchor") ) {
+			let closestListItem = e.target.closest(".article__anchor");
+			
+			if ( closestListItem ) {
+				
 				for (let listItem of listItems) {
 					listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
 				}
-				e.target.classList.add("article__anchor_expanded", "article__anchor_active");
+				closestListItem.classList.add("article__anchor_expanded", "article__anchor_active");
 			}
 
 			// If the nav button was clicked...
