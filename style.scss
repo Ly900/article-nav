@@ -127,8 +127,18 @@ html {
 		display: flex;
 		align-items: center;
 	}
-	&-tiles {
+	&__tiles {
 		border: 1px solid black;
-		margin-top: 100px;
+		max-width: 1120px;
+		margin: 100px auto 0;
+	}
+	&__tile {
+		border: 1px solid red;
+	}
+	&__tile-picture {
+
+	}
+	&__tile-img {
+		max-width: 100px;
 	}
 }

@@ -88,8 +88,13 @@ html {
 .article__anchor_expanded {
   display: flex;
   align-items: center; }
-.article-tiles {
+.article__tiles {
   border: 1px solid black;
-  margin-top: 100px; }
+  max-width: 1120px;
+  margin: 100px auto 0; }
+.article__tile {
+  border: 1px solid red; }
+.article__tile-img {
+  max-width: 100px; }
 
 /*# sourceMappingURL=style.css.map */

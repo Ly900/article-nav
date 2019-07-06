@@ -36,16 +36,20 @@ class ArticleTiles extends React.Component {
 	render() {
 
 		return(
-			<div class="container-fluid article-tiles">
-				
+			<div class="container-fluid article__tiles">
+				<div class="row">
 					{ !this.state.loading && 
 						this.state.articles.map( article => {
 							return (
-								<div class="tile" key={article.id}>{article.title}</div>
+								<div class="col article__tile" key={article.id}>
+									<strong>{article.title}</strong><br/>
+									<picture class="article__tile-picture"><img src={`./images/${article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
+									{article.category}
+								</div>
 							)
 						})
 					}
-
+				</div>
 			</div>
 		)
 	}
