@@ -103,8 +103,10 @@ class ArticleComponent extends React.Component {
 	handleClick = (e) => {
 		console.log(e.target);
 		console.log("this.state.navExpanded: ", this.state.navExpanded);
+		console.log(e.target.closest(".article__anchor"));
 
 		const listItems = document.getElementsByClassName("article__anchor");
+		const buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
 
 		// If the left mouse button was not clicked, return and do nothing.
 		if (e.button !== 0) {
@@ -114,19 +116,20 @@ class ArticleComponent extends React.Component {
 		// If the nav is collapsed, expand all the list items. 
 		if (!this.state.navExpanded) {
 			let closestListItem = e.target.closest(".article__anchor");
-			if ( closestListItem ) {
+		
+			if ( closestListItem || buttonClicked) {
 				for (let listItem of listItems) {
 					listItem.classList.add("article__anchor_expanded");
 				}
 				this.toggleNav();
-				console.log("this.state.navExpanded: ", this.state.navExpanded);
+				// console.log("this.state.navExpanded: ", this.state.navExpanded);
 			}
 			return;
 		}
 
-		// If the nav is expanded... display the list item that was clicked and collapse all the other list items.
+		// If the nav is expanded... 
 		let closestListItem = e.target.closest(".article__anchor");
-		console.log(e.target);
+		// console.log(e.target);
 
 		// If an element inside the nav was clicked...
 		if ( closestListItem ) {
@@ -134,23 +137,21 @@ class ArticleComponent extends React.Component {
 				listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
 			}
 			closestListItem.classList.add("article__anchor_expanded", "article__anchor_active");
+			this.setActiveCategory();
+			this.toggleNav();
 		}
 
 		// If the nav button was clicked...
-		if ( e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button") ) {
+		if ( buttonClicked ) {
 			for (let listItem of listItems) {
 				if ( listItem.classList.contains("article__anchor_active") ) {
 					listItem.classList.add("article__anchor_expanded");
-				}
-				if ( !listItem.classList.contains("article__anchor_active") ) {
-					listItem.classList.remove("article__anchor_expanded");
+				} else {
+					listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
 				}
 			}
+			this.toggleNav();
 		}
-
-		this.setActiveCategory();
-
-		this.toggleNav();
 
 	}
 
