@@ -17,16 +17,24 @@ class ArticleTiles extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			navExpanded: false,
-			loading: true,
 			articles: null,
+			loading: true,
 			activeCategory: ""
 		}
 	}
+
+	// componentWillReceiveProps(props) {
+	// 	console.log("props.activeCategory: ", props.activeCategory);
+	// }
+
+	displayTiles(cat) {
+		console.log("active category: ", this.props.activeCategory);
+	}
+
 	render() {
 		return(
 			<div class="article-tiles">
-				<div class="tile">Hey</div>	
+				<div class="tile">{this.props.activeCategory}</div>
 			</div>
 		)
 	}
@@ -43,17 +51,18 @@ class ArticleComponent extends React.Component {
 		}
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
 		fetch("./article-feed.json")
 			.then(response => response.json())
 			.then(data => {
+				console.log("step 1");
 				this.setState({ 
 					loading: false,
 					articles: data.articles,
-					activeCategory: data.articles[0].category
+					activeCategory: "All"
 				})
-			}).then(stuff => {
-
+				console.log("step 2");
+				this.refs.tiles.displayTiles(this.state.activeCategory)
 			})
 	}
 
@@ -73,7 +82,7 @@ class ArticleComponent extends React.Component {
 
 	handleListItemClick = (e) => {
 		let listItems = document.getElementsByClassName("article__anchor");
-		console.log(e.target.textContent);
+		// console.log(e.target.textContent);
 
 		// If the nav is collapsed, expand all the list items. 
 		if (!this.state.navExpanded) {
@@ -113,7 +122,7 @@ class ArticleComponent extends React.Component {
 		}
 	}
 
-	removeDuplicates(myArr, prop) {
+	removeDuplicates = (myArr, prop) => {
 		return myArr.filter((obj, pos, arr) => {
 			return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
 		});
@@ -157,7 +166,7 @@ class ArticleComponent extends React.Component {
 
 				</div>
 
-				<ArticleTiles/>
+				<ArticleTiles ref="tiles" activeCategory={this.state.activeCategory} />
 
 			</header>
 		)
