@@ -13,6 +13,16 @@ const Heading = () => {
 	)
 }
 
+const ArticleTile = (props) => {
+	return(
+		<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={props.article.id}>
+			<picture class="article__tile-picture"><img src={`./images/${props.article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
+			<span class="article__tile-content article__tile-category">{props.article.category}</span>
+			<span class="article__tile-content article__tile-title"><strong>{props.article.title}</strong></span>
+		</div>
+	)
+}
+
 class ArticleTiles extends React.Component {
 	constructor(props) {
 		super(props);
@@ -24,42 +34,33 @@ class ArticleTiles extends React.Component {
 	}
 
 	displayTiles(cat) {
-		console.log("active category: ", this.props.activeCategory);
-		console.log("articles: ", this.props.articles);
+		// console.log("active category: ", this.props.activeCategory);
+		// console.log("articles: ", this.props.articles);
 		this.setState({
 			loading: false
 		})
 	}
 
 	render() {
+		let activeCategory = this.props.activeCategory.toLowerCase();
+		let articles = this.props.articles;
 
 		return(
 			<div class="container-fluid article__tiles">
 				<div class="row">
-					{ !this.state.loading && 
-						this.props.articles.map( article => {
-							console.log("active category: ", this.props.activeCategory);
-							if (this.props.activeCategory !== "All") {
-						
-								if (article.category.toLowerCase() === this.props.activeCategory.toLowerCase()) {
+					{ !this.state.loading && articles.map( article => {
+
+							if (activeCategory !== "all") {
+								if (article.category.toLowerCase() === activeCategory) {
 									return (
-										<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={article.id}>
-											<picture class="article__tile-picture"><img src={`./images/${article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
-											<span class="article__tile-content article__tile-category">{article.category}</span>
-											<span class="article__tile-content article__tile-title"><strong>{article.title}</strong></span>
-										</div>
+										<ArticleTile article={article} />
 									)
 								}
 								return;
-							} else {
-								return (
-									<div class="article__tile d-flex col flex-column align-items-center justify-content-start" key={article.id}>
-										<picture class="article__tile-picture"><img src={`./images/${article.category.toLowerCase()}.png`} class="article__tile-img"/></picture>
-										<span class="article__tile-content article__tile-category">{article.category}</span>
-										<span class="article__tile-content article__tile-title"><strong>{article.title}</strong></span>
-									</div>
-								)
 							}
+								return (
+									<ArticleTile article={article} />
+								)
 
 						})
 					}
@@ -84,13 +85,11 @@ class ArticleComponent extends React.Component {
 		fetch("./article-feed.json")
 			.then(response => response.json())
 			.then(data => {
-				console.log("step 1");
 				this.setState({ 
 					loading: false,
 					articles: data.articles,
 					activeCategory: "All"
 				})
-				console.log("step 2");
 				this.refs.tiles.displayTiles(this.state.activeCategory)
 			})
 	}
