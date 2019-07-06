@@ -72,6 +72,7 @@ class ArticleComponent extends React.Component {
 					navExpanded: false
 				})
 				document.addEventListener("mousedown", this.handleClick, false)
+				document.addEventListener("keyup", this.handleKeyPress, false)
 			})
 	}
 
@@ -89,8 +90,26 @@ class ArticleComponent extends React.Component {
 		});
 	}
 
+	closeNav = () => {
+		let listItems = document.getElementsByClassName("article__anchor");
+		for (let listItem of listItems) {
+			if ( listItem.classList.contains("article__anchor_active") ) {
+				listItem.classList.add("article__anchor_expanded");
+			} else {
+				listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
+			}
+		}
+	}
+
+	handleKeyPress = (e) => {
+		if (this.state.navExpanded && e.keyCode === 27) {
+		this.closeNav();
+		this.toggleNav();
+		}
+	}
+
 	handleClick = (e) => {
-		const listItems = document.getElementsByClassName("article__anchor");
+		let listItems = document.getElementsByClassName("article__anchor");
 		const buttonClicked = e.target.classList.contains("article__icon") || e.target.classList.contains("article__nav-button");
 
 		// If the left mouse button was not clicked, return and do nothing.
@@ -124,26 +143,9 @@ class ArticleComponent extends React.Component {
 			this.toggleNav();
 		}
 
-		// If the nav button was clicked...
-		if ( buttonClicked ) {
-			for (let listItem of listItems) {
-				if ( listItem.classList.contains("article__anchor_active") ) {
-					listItem.classList.add("article__anchor_expanded");
-				} else {
-					listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
-				}
-			}
-			this.toggleNav();
-		}
-
-		if ( !closestListItem && !buttonClicked ) {
-			for (let listItem of listItems) {
-				if ( listItem.classList.contains("article__anchor_active") ) {
-					listItem.classList.add("article__anchor_expanded");
-				} else {
-					listItem.classList.remove("article__anchor_expanded", "article__anchor_active");
-				}
-			}
+		// If the nav button or an area outside the nav is clicked, close the nav.
+		if ( buttonClicked || !closestListItem) {
+			this.closeNav();
 			this.toggleNav();
 		}
 
