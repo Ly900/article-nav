@@ -38,6 +38,11 @@ html {
 	&__category {
 		text-transform: uppercase;
 	}
+	&__nav-container {
+		position: fixed;
+		width: 100%;
+		cursor: pointer;
+	}
 	&__nav {
 		border: none;
 		position: relative;
@@ -123,5 +128,6 @@ html {
 	}
 	&-tiles {
 		border: 1px solid black;
+		margin-top: 100px;
 	}
 }

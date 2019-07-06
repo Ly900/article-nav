@@ -23,10 +23,6 @@ class ArticleTiles extends React.Component {
 		}
 	}
 
-	// componentWillReceiveProps(props) {
-	// 	console.log("props.activeCategory: ", props.activeCategory);
-	// }
-
 	displayTiles(cat) {
 		console.log("active category: ", this.props.activeCategory);
 	}

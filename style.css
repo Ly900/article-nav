@@ -20,6 +20,10 @@ html {
   margin-bottom: 1em; }
 .article__category {
   text-transform: uppercase; }
+.article__nav-container {
+  position: fixed;
+  width: 100%;
+  cursor: pointer; }
 .article__nav {
   border: none;
   position: relative;
@@ -84,6 +88,7 @@ html {
   display: flex;
   align-items: center; }
 .article-tiles {
-  border: 1px solid black; }
+  border: 1px solid black;
+  margin-top: 100px; }
 
 /*# sourceMappingURL=style.css.map */
